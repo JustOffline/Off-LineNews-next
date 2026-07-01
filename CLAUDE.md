@@ -76,13 +76,10 @@ Everything else in the prior plan (schema, alias tables, workflow job ordering, 
 | Data store | SQLite (`data/tracker.db`) — platforms, legislation, articles, status_signals | binary file as source of truth, read at build time |
 | DB access | better-sqlite3 (Node, read-only at build time) | synchronous, simplest option for build-time SQLite reads |
 | Fetch/corroboration | Python (carried over from prior plan, extended with articles writes) | no reason to rewrite working RSS/corroboration logic in JS |
-| Hosting | Vercel (free tier) — **resolved, §10** | native Next.js support, zero-config deploys, custom domain later; preview URLs are branch-scoped and never touch production |
-| Hosting fallback | GitHub Pages via `output: 'export'` | kept working (§9) as the config that still serves `main` in production — not a hosting choice to re-decide, just insurance |
-| CI | GitHub Actions | fetch/corroborate (Python) → build (Next.js reads DB) → deploy, on `main` only |
+| Hosting | GitHub Pages via `output: 'export'` — **resolved, §10** | purely GitHub-native, no third-party host/account, no server infra beyond what's already in use for the rest of this project |
+| CI | GitHub Actions | fetch/corroborate (Python) → build (Next.js reads DB) → deploy |
 
-**Hosting tradeoff, stated plainly:** Vercel is built by the Next.js team, deploys on every push with no config, and gives you real server infrastructure later for free (API routes, ISR) if this product ever needs more than static generation — e.g. server-side search across a growing article corpus. GitHub Pages keeps everything inside one platform and matches the "no third dependency" instinct behind the rest of your toolchain, but costs you basePath/assetPrefix/.nojekyll config friction on every route and blocks you from ever adding a server-side feature without migrating later anyway.
-
-**Resolved 2026-07-01 — environment separation:** the rebuild happens on a `nextjs-rebuild` branch, deployed to a Vercel preview URL (e.g. `off-line-news-git-nextjs-rebuild-<you>.vercel.app`), imported via vercel.com/new pointed at that branch. `main` is untouched and keeps deploying the current hand-written `index.html` to `justoffline.github.io/Off-LineNews` via the existing `.github/workflows/main.yml` — that pipeline is not modified until the rebuild is ready to actually replace it. These are two entirely separate hosts (Vercel vs. GitHub Pages) with no shared deploy path, so there is no way a rebuild-phase deploy can affect the production site — this closes out the "don't overwrite the live site" risk called out in Phase 1 for every phase from here on, not just scaffolding. The `nextjs-deploy.yml` GitHub Actions workflow added during Phase 1 (workflow_dispatch-only, deploys to GitHub Pages) is now superseded by this Vercel setup and can be deleted or left dormant — it's no longer the deploy path being used.
+**Resolved 2026-07-01 — GitHub-native only.** GitHub Pages can only serve one live deployment per repo, so the `nextjs-rebuild` branch's shell is reviewed locally (`npm run dev` / `npm run build` + static preview) during development, not via a hosted preview URL. `main` stays on its existing `.github/workflows/main.yml` pipeline (hand-written `index.html`, daily Python fetch, deploy to `justoffline.github.io/Off-LineNews`) until the rebuild is ready to cut over. The `nextjs-deploy.yml` GitHub Actions workflow added during Phase 1 (`workflow_dispatch`-only, builds the static export and deploys to GitHub Pages via `actions/deploy-pages`) is the actual production deploy path once the rebuild is ready — running it replaces the live site's content, so it should stay manual-trigger-only until then, not wired to `push`/`cron`.
 
 ---
 
@@ -192,7 +189,7 @@ Clustering rule (v1, rule-based, in `cluster_articles.py`): group articles into 
 
 ## 7. Build phases
 
-1. **Scaffold** — `create-next-app`, `shadcn init` (choose the system-sans + black/white tokens from §5 during init), no data wiring yet. Confirm the shell renders and deploys (to Vercel or GH Pages per §3) before touching data.
+1. **Scaffold** — `create-next-app`, `shadcn init` (choose the system-sans + black/white tokens from §5 during init), no data wiring yet. Confirm the shell renders locally and builds cleanly for GitHub Pages static export (§3, §9) before touching data.
 2. **Schema + migration** — `scripts/db.py`, `scripts/migrate_seed_db.py`. Seed from the real `index.html`'s 12 platform cards / 11 legislation rows. Manually diff the migration script's printed summary against the live site — this is the check that the migration didn't lose or mangle anything.
 3. **DB → UI read path** — `lib/db.ts`, replace hardcoded platform/legislation HTML with Server Components reading `tracker.db` at build time. This proves the DB→page pipeline works before automation touches it — isolates "does rendering from SQLite work" from "does the corroboration engine work."
 4. **Corroboration engine** — port `update_tracker.py` from the prior plan, PR-gated by default (`AUTO_PUBLISH=false`), proximity-window matching included from day one, not retrofitted.
@@ -214,7 +211,7 @@ Clustering rule (v1, rule-based, in `cluster_articles.py`): group articles into 
 
 ---
 
-## 9. GitHub Pages fallback config (only if you skip Vercel)
+## 9. GitHub Pages deploy config
 
 ```ts
 // next.config.ts
@@ -237,7 +234,7 @@ Also required: a `.nojekyll` file in `/public` (GitHub's Jekyll processor otherw
 
 | Decision | Default assumed here | Alternative |
 |---|---|---|
-| ~~Hosting~~ | **Resolved: Vercel**, via a `nextjs-rebuild` branch preview deploy, fully decoupled from the `main`-branch GitHub Pages production site (§3) | — |
+| ~~Hosting~~ | **Resolved: GitHub Pages** (§9), purely GitHub-native — no third-party host. Reviewed locally during development; `nextjs-deploy.yml` (`workflow_dispatch`-only) is the eventual cutover path (§3) | — |
 | Auto-publish | PR-gated (`AUTO_PUBLISH=false`) | Direct-to-main, as originally specced |
 | Status color | Strict black/white/grayscale + icon | One restrained accent color for severity |
 | `tracker.db` diffs | Also commit `tracker.json` snapshot | Binary-only, rely on audit-log prints |
