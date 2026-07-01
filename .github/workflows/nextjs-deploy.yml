@@ -1,0 +1,61 @@
+name: Deploy Next.js Shell (manual)
+
+# Manual-trigger only, on purpose. This deploys the new Next.js rebuild to
+# the SAME GitHub Pages target as the existing daily-update workflow
+# (main.yml), which currently serves the real, live tracker. Running this
+# will replace the live site's visible content with the new shell until
+# the data-wiring phases of the rebuild (CLAUDE.md §7) ship real content
+# back in. Do not add push/schedule triggers here without first confirming
+# the rebuild has reached feature parity with the current live site — see
+# CLAUDE.md §0.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build Next.js static export
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "out"
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
