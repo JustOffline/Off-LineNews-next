@@ -16,6 +16,22 @@ The real repo, confirmed by direct file reads in a prior Claude Code session, is
 
 This document plans a rebuild from that real state, not from the discarded mockup. If you (Claude Code, with repo access) find the actual state differs from this description, stop and reconcile before proceeding — don't silently build on top of an assumption.
 
+### 0.1 Current state as of this revision (read before running §11)
+
+Phase 1 scaffolding happened, but inside the production repo's working directory, on a local branch called `nextjs-rebuild`, committed and briefly pushed to `origin` (production `Off-LineNews`) before being deleted from that remote again. Nothing has been pushed anywhere else yet. Concretely, in `D:\Justin\OneDrive\Documents\Off-LineNews`:
+
+- `git remote -v` — `origin` = `https://github.com/JustOffline/Off-LineNews.git` (production — must stay untouched)
+- Local branch `nextjs-rebuild` exists, 2 commits ahead of `main`:
+  1. `Scaffold Next.js 16 + shadcn/ui shell for v3 rebuild (Phase 1)`
+  2. `Resolve hosting to GitHub Pages only, drop Vercel`
+- `origin/main` (production) is untouched — confirmed clean, no scaffold files tracked there.
+- The sibling repo `Off-LineNews-next` does not exist yet on GitHub — it needs to be created, not assumed.
+- `next.config.ts` inside the scaffold may still have `basePath`/`assetPrefix` set to `/Off-LineNews` (the production repo name) instead of `/Off-LineNews-next` — must be corrected or every asset 404s post-deploy.
+- No GitHub Pages deploy workflow exists yet for the new repo.
+- `gh` CLI is installed locally (`C:\Program Files\GitHub CLI\gh.exe`, not yet on session `PATH`) but not authenticated — `gh auth login` is the next blocking step, and it's interactive (requires the human's browser).
+
+§11 is the exact runbook to finish this migration from this exact state. Run it instead of improvising — it exists because manually re-deriving these steps in a live terminal already produced one merged-command error and one premature push attempt to a repo that didn't exist yet.
+
 ---
 
 ## 1. Critique of the prior automation plan (SQLite corroboration engine)
@@ -76,10 +92,10 @@ Everything else in the prior plan (schema, alias tables, workflow job ordering, 
 | Data store | SQLite (`data/tracker.db`) — platforms, legislation, articles, status_signals | binary file as source of truth, read at build time |
 | DB access | better-sqlite3 (Node, read-only at build time) | synchronous, simplest option for build-time SQLite reads |
 | Fetch/corroboration | Python (carried over from prior plan, extended with articles writes) | no reason to rewrite working RSS/corroboration logic in JS |
-| Hosting | GitHub Pages via `output: 'export'` — **resolved, §10** | purely GitHub-native, no third-party host/account, no server infra beyond what's already in use for the rest of this project |
+| Hosting | GitHub Pages (static export) — resolved 2026-07, see §10.1 | — |
 | CI | GitHub Actions | fetch/corroborate (Python) → build (Next.js reads DB) → deploy |
 
-**Resolved 2026-07-01 — GitHub-native only.** GitHub Pages can only serve one live deployment per repo, so the `nextjs-rebuild` branch's shell is reviewed locally (`npm run dev` / `npm run build` + static preview) during development, not via a hosted preview URL. `main` stays on its existing `.github/workflows/main.yml` pipeline (hand-written `index.html`, daily Python fetch, deploy to `justoffline.github.io/Off-LineNews`) until the rebuild is ready to cut over. The `nextjs-deploy.yml` GitHub Actions workflow added during Phase 1 (`workflow_dispatch`-only, builds the static export and deploys to GitHub Pages via `actions/deploy-pages`) is the actual production deploy path once the rebuild is ready — running it replaces the live site's content, so it should stay manual-trigger-only until then, not wired to `push`/`cron`.
+**Hosting, resolved:** GitHub Pages, `output: 'export'` (exact config in §9). No Vercel, no third-party host — stays entirely inside GitHub, matching the rest of this toolchain. The one real cost of static export is losing server-side features (API routes, on-request SQLite queries) if this product ever needs them — not a concern at this scale, since all data-fetching happens at build time regardless of host. See §10.1 for how the rebuild stays isolated from the live production URL without Vercel's branch-preview mechanism.
 
 ---
 
@@ -189,7 +205,7 @@ Clustering rule (v1, rule-based, in `cluster_articles.py`): group articles into 
 
 ## 7. Build phases
 
-1. **Scaffold** — `create-next-app`, `shadcn init` (choose the system-sans + black/white tokens from §5 during init), no data wiring yet. Confirm the shell renders locally and builds cleanly for GitHub Pages static export (§3, §9) before touching data.
+1. **Scaffold** — `create-next-app`, `shadcn init` (choose the system-sans + black/white tokens from §5 during init), no data wiring yet. Confirm the shell renders and deploys (to Vercel or GH Pages per §3) before touching data.
 2. **Schema + migration** — `scripts/db.py`, `scripts/migrate_seed_db.py`. Seed from the real `index.html`'s 12 platform cards / 11 legislation rows. Manually diff the migration script's printed summary against the live site — this is the check that the migration didn't lose or mangle anything.
 3. **DB → UI read path** — `lib/db.ts`, replace hardcoded platform/legislation HTML with Server Components reading `tracker.db` at build time. This proves the DB→page pipeline works before automation touches it — isolates "does rendering from SQLite work" from "does the corroboration engine work."
 4. **Corroboration engine** — port `update_tracker.py` from the prior plan, PR-gated by default (`AUTO_PUBLISH=false`), proximity-window matching included from day one, not retrofitted.
@@ -211,7 +227,7 @@ Clustering rule (v1, rule-based, in `cluster_articles.py`): group articles into 
 
 ---
 
-## 9. GitHub Pages deploy config
+## 9. GitHub Pages config (primary — resolved per §3)
 
 ```ts
 // next.config.ts
@@ -234,7 +250,172 @@ Also required: a `.nojekyll` file in `/public` (GitHub's Jekyll processor otherw
 
 | Decision | Default assumed here | Alternative |
 |---|---|---|
-| ~~Hosting~~ | **Resolved: GitHub Pages** (§9), purely GitHub-native — no third-party host. Reviewed locally during development; `nextjs-deploy.yml` (`workflow_dispatch`-only) is the eventual cutover path (§3) | — |
+| Hosting | GitHub Pages, resolved 2026-07, see §10.1 | — (Vercel considered and rejected — GitHub-only preferred) |
 | Auto-publish | PR-gated (`AUTO_PUBLISH=false`) | Direct-to-main, as originally specced |
 | Status color | Strict black/white/grayscale + icon | One restrained accent color for severity |
 | `tracker.db` diffs | Also commit `tracker.json` snapshot | Binary-only, rely on audit-log prints |
+
+### 10.1 Environment separation (resolved — binding for every phase, not just Phase 1)
+
+The live site at `justoffline.github.io/Off-LineNews` is a real, in-use asset (CHT fellowship application evidence, deadline July 12 2026) and must not go dark or regress at any point during this rebuild. Since hosting is GitHub Pages only (no Vercel branch-preview mechanism available), isolation comes from repo separation, not branch discipline:
+
+- **The rebuild lives in its own sibling repo** — `Off-LineNews-next` (rename freely) — not inside the production `Off-LineNews` repo. GitHub Pages gives every repo its own free URL automatically (`justoffline.github.io/Off-LineNews-next/`), so this repo has zero shared surface with production: no shared branch, no shared workflow, nothing an accidental `workflow_dispatch` or push could touch on the live site. This is safer than branch-based isolation because there's no rule to remember — the repos simply don't intersect.
+- **Fastest review loop, no deployment at all:** `npm run build && npx serve out` — reviews the static export on localhost before anything touches GitHub.
+- **The production repo (`Off-LineNews`) is not touched** — no commits, no new workflows, no Pages-setting changes — until cutover.
+- **Cutover**, once the rebuild reaches full feature parity (platforms, legislation, all five pillars, news feed, methodology) and ideally after July 12: replace the production repo's contents with the finished v3 build and let its existing Pages setup pick it up, rather than trying to migrate mid-build. Don't cut over a partial rebuild under deadline pressure — that recreates the exact risk this section exists to avoid.
+
+---
+
+## 11. Phase 1 completion runbook (autonomous — run from `D:\Justin\OneDrive\Documents\Off-LineNews`)
+
+Run each step individually, wait for output, verify the checkpoint before continuing. Do not chain commands with `&&` or paste multiple git commands on one line — that already caused one failed push in this migration. If any checkpoint fails, stop and report the actual output rather than proceeding on an assumption.
+
+**Step 1 — confirm starting state.**
+```
+git remote -v
+git log --oneline -3
+git status
+```
+Checkpoint: `origin` = production `Off-LineNews`; log shows the two commits from §0.1 on top of `origin/main`; status is clean (nothing uncommitted). If status is not clean, stop — something changed since §0.1 was written.
+
+**Step 2 — confirm `gh` is available and authenticated.**
+```
+gh --version
+gh auth status
+```
+Checkpoint: version prints, auth status shows logged in as `JustOffline`. If not authenticated: `gh auth login` (interactive, requires the human).
+
+**Step 3 — create the sibling repo, empty, from outside the production folder.**
+```
+cd D:\Justin\OneDrive\Documents
+gh repo create JustOffline/Off-LineNews-next --public
+cd Off-LineNews
+```
+Checkpoint: command prints the new repo URL, no error. If it errors "already exists," skip creation and continue — the repo is already there from an earlier attempt.
+
+**Step 4 — fix `basePath`/`assetPrefix` on the `nextjs-rebuild` branch before pushing, not after.**
+```
+type next.config.ts
+```
+Read the output. If `basePath` or `assetPrefix` reference `Off-LineNews` without `-next`, fix it:
+```powershell
+(Get-Content next.config.ts) -replace 'Off-LineNews(?!-next)', 'Off-LineNews-next' | Set-Content next.config.ts
+git add next.config.ts
+git commit -m "Fix basePath/assetPrefix for Off-LineNews-next"
+```
+Checkpoint: `type next.config.ts` again shows `Off-LineNews-next` in both fields. If it was already correct, skip the commit.
+
+**Step 5 — add the Pages deploy workflow, on this branch, before pushing.**
+Create `.github/workflows/deploy.yml` with the exact content from §11.1 below.
+```
+git add .github/workflows/deploy.yml
+git commit -m "Add GitHub Actions Pages deploy workflow"
+```
+
+**Step 6 — push this branch to the new repo as its `main`.**
+```
+git push https://github.com/JustOffline/Off-LineNews-next.git nextjs-rebuild:main
+```
+Checkpoint: push succeeds, no "Repository not found." If it 404s, Step 3 didn't actually succeed — go back, don't retry blindly.
+
+**Step 7 — enable Pages via API (avoids the manual Settings UI step).**
+```
+gh api repos/JustOffline/Off-LineNews-next/pages -X POST -f build_type=workflow
+```
+Checkpoint: succeeds or returns "already exists" — either is fine. If it errors with something else, fall back to the one unavoidable manual step: repo → Settings → Pages → Source → **GitHub Actions**.
+
+**Step 8 — verify the deploy.**
+```
+gh run list --repo JustOffline/Off-LineNews-next --limit 1
+```
+Wait for status `completed`/`success` (poll every ~20s, don't assume it's instant). Then confirm the live page:
+```
+start https://justoffline.github.io/Off-LineNews-next/
+```
+Checkpoint: shell renders, no 404, no broken asset paths (open browser dev tools console if anything looks unstyled — that's almost always the basePath check from Step 4 not having actually caught something).
+
+**Step 9 — clean up the production repo folder completely.**
+```
+git checkout main
+git branch -D nextjs-rebuild
+git status
+git branch
+```
+Checkpoint: `git status` clean, `git branch` shows only `main`, no scaffold files present (`dir` should show only `index.html`, `scripts`, `.github`, `SOURCES.md`, and other pre-existing production files — nothing from `app/`, `components/`, `package.json`, etc.).
+
+**Step 10 — switch all future work to a fresh clone of the new repo.**
+```
+cd D:\Justin\OneDrive\Documents
+git clone https://github.com/JustOffline/Off-LineNews-next.git
+cd Off-LineNews-next
+npm install
+npm run build
+```
+Checkpoint: clean build, matches the successful `npm run build` output already seen once during this migration. Once this passes, Phase 1 is genuinely done — report back and stop for confirmation before starting Phase 2 (§7, step 2 — SQLite schema + migration), same "stop and confirm" rule as before.
+
+### 11.1 `deploy.yml` content (for Step 5)
+
+```yaml
+name: Deploy Next.js to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+```
+
+---
+
+## Kickoff prompt (paste this into Claude Code in this repo)
+
+```
+Read CLAUDE.md in full before doing anything else, including §0.1 and §11 —
+this is a mid-migration state, not a fresh start.
+
+Run §11 (Phase 1 completion runbook) exactly as written: one step at a
+time, verify each checkpoint against actual command output before running
+the next step, and stop immediately to report if any checkpoint doesn't
+match — do not improvise a fix or chain commands together.
+
+Do not touch the production repo (JustOffline/Off-LineNews) beyond what
+§11 Step 9 explicitly specifies. Do not run any command against it that
+isn't in this runbook.
+
+Once Step 10 passes, stop and report the live URL
+(https://justoffline.github.io/Off-LineNews-next/) — I'll confirm before
+you start Phase 2.
+```
