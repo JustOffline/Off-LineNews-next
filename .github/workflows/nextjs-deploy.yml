@@ -1,14 +1,12 @@
-name: Deploy Next.js Shell (manual)
+name: Deploy Next.js to GitHub Pages
 
-# Manual-trigger only, on purpose. This deploys the new Next.js rebuild to
-# the SAME GitHub Pages target as the existing daily-update workflow
-# (main.yml), which currently serves the real, live tracker. Running this
-# will replace the live site's visible content with the new shell until
-# the data-wiring phases of the rebuild (CLAUDE.md §7) ship real content
-# back in. Do not add push/schedule triggers here without first confirming
-# the rebuild has reached feature parity with the current live site — see
-# CLAUDE.md §0.
+# This repo (Off-LineNews-next) is the isolated rebuild sibling per
+# CLAUDE.md §10.1 — it has no production content to protect, so pushing
+# to main auto-deploys. The actual production site (JustOffline/Off-LineNews)
+# is untouched by this workflow entirely; it lives in a different repo.
 on:
+  push:
+    branches: [main]
   workflow_dispatch: {}
 
 permissions:
