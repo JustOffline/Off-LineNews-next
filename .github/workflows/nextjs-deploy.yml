@@ -57,3 +57,24 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      # A pass here only means the deploy is live and correct at this moment —
+      # it does not prevent a bad deploy from going out; deploy-pages already
+      # ran above. If this fails, the site is already live-but-wrong. Rollback
+      # is `git revert` the content commit and re-push to trigger a clean deploy.
+      - name: Smoke test deployed content
+        run: |
+          URL="${{ steps.deployment.outputs.page_url }}"
+          for i in 1 2 3 4 5; do
+            BODY="$(curl -fs "$URL" || true)"
+            if echo "$BODY" | grep -q "TikTok"; then
+              echo "Smoke test passed on attempt $i"
+              exit 0
+            fi
+            echo "Attempt $i/5: expected content not found yet, retrying in 5s..."
+            sleep 5
+          done
+          echo "::error::Smoke test failed after 5 attempts — 'TikTok' not found at $URL"
+          echo "--- last response body ---"
+          echo "$BODY"
+          exit 1
