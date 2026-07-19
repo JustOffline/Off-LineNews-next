@@ -130,7 +130,7 @@ data/
 scripts/                     Python — unchanged home from the prior plan
   db.py
   migrate_seed_db.py         one-time: seed tracker.db from the real index.html's
-                              12 platform cards / 11 legislation rows
+                              12 platform cards / 10 legislation rows
   fetch_news.py               extended: also writes to the new `articles` table
   update_tracker.py          corroboration engine, PR-gated by default (§1)
   cluster_articles.py        new — rule-based zettelkasten clustering
@@ -199,7 +199,7 @@ Clustering rule (v1, rule-based, in `cluster_articles.py`): group articles into 
 ## 7. Build phases
 
 1. **Scaffold** — `create-next-app`, `shadcn init` (choose the system-sans + black/white tokens from §5 during init), no data wiring yet. Confirm the shell renders and deploys (to Vercel or GH Pages per §3) before touching data.
-2. **Schema + migration** — `scripts/db.py`, `scripts/migrate_seed_db.py`. Seed from the real `index.html`'s 12 platform cards / 11 legislation rows. Manually diff the migration script's printed summary against the live site — this is the check that the migration didn't lose or mangle anything.
+2. **Schema + migration** — `scripts/db.py`, `scripts/migrate_seed_db.py`. Seed from the real `index.html`'s 12 platform cards / 10 legislation rows. Manually diff the migration script's printed summary against the live site — this is the check that the migration didn't lose or mangle anything.
 3. **DB → UI read path** — `lib/db.ts`, replace hardcoded platform/legislation HTML with Server Components reading `tracker.db` at build time. This proves the DB→page pipeline works before automation touches it — isolates "does rendering from SQLite work" from "does the corroboration engine work."
 4. **Corroboration engine** — port `update_tracker.py` from the prior plan, PR-gated by default (`AUTO_PUBLISH=false`), proximity-window matching included from day one, not retrofitted.
 5. **Articles table + zettelkasten** — `cluster_articles.py` (rule-based), `ZettelkastenGraph.tsx` (react-force-graph), `/zettelkasten` page.
@@ -275,7 +275,7 @@ Read CLAUDE.md in full before doing anything else, including §0.1 — Phase 1
 
 Next unit of work is Phase 2 (§7, step 2): scripts/db.py (SQLite schema)
 and scripts/migrate_seed_db.py, seeding data/tracker.db from this repo's
-own index.html — its 12 platform cards and 11 legislation rows are still
+own index.html — its 12 platform cards and 10 legislation rows are still
 intact and unmutated (the automation that used to touch it was removed,
 see §0.1 incident 1). Manually diff the migration script's printed summary
 against index.html before trusting the seed.
