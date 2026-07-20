@@ -1,14 +1,8 @@
-import type { Platform, PlatformStatus } from "@/lib/types";
-
-const STATUS_META: Record<PlatformStatus, { glyph: string; label: string }> = {
-  banned: { glyph: "●", label: "BANNED" },
-  restricted: { glyph: "▲", label: "RESTRICTED" },
-  "at-risk": { glyph: "△", label: "AT RISK" },
-  monitoring: { glyph: "○", label: "MONITORING" },
-};
+import type { Platform } from "@/lib/types";
+import { PLATFORM_STATUS_META } from "@/lib/statusMeta";
 
 export function PlatformCard({ platform }: { platform: Platform }) {
-  const { glyph, label } = STATUS_META[platform.status];
+  const { glyph, label } = PLATFORM_STATUS_META[platform.status];
 
   return (
     <article className="flex flex-col gap-2 border border-border p-4">
