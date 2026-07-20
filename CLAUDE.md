@@ -317,3 +317,62 @@ one, same "stop and confirm between units of work" pattern as before.
 ## 19. Open items (tracked separately from the §13 sprint)
 
 **Production Pages still 404.** `justoffline.github.io/Off-LineNews` (the old hand-written `index.html` site — separate repo, `JustOffline/Off-LineNews`) returns 404. The user re-enabled Pages Source → GitHub Actions after an earlier visibility-change incident (§0.1 incident 2 is the same failure mode, different repo), but flipping that setting alone doesn't trigger a deploy — it needs an actual workflow run: either the next scheduled cron run, or a manual "Run workflow" dispatch from that repo's Actions tab. Smaller and unrelated to the `Off-LineNews-next` rebuild; do not fold a fix for this into any §13 work, and do not touch the production repo beyond confirming this.
+
+---
+
+## 20. Legislation Tracker + Content Engine Connector — ground truth
+
+No §18 exists in this document; a different chat's reference to one was not
+adopted (see `.claude/reconciliation-log.md` for the full incident).
+
+**Legislation Tracker content increment — done, same recipe as the Platform
+Tracker.** `lib/types.ts` (`Legislation`, `LegislationStatus`), the new
+shared `lib/statusMeta.ts` (`PLATFORM_STATUS_META` + `LEGISLATION_STATUS_META`
+— `PlatformCard.tsx` now imports from here instead of an inline table),
+`lib/legislation.ts` (10 rows, hand-transcribed from `index.html:678-747`,
+same "expected to drift" caveat as `lib/platforms.ts`), `components/ui/table.tsx`
+(shadcn code-gen), `components/dashboard/LegislationRow.tsx`, rendered as a
+second section on `/`. Verified: all 10 rows diffed against `index.html` by
+hand, `npm run build` succeeds, strict grayscale confirmed (no inline color
+anywhere in the static export).
+
+**Content Engine Connector — done, built from scratch, not "wired up."**
+No quote-card generator or Substack script existed anywhere in this repo
+before this increment — confirmed by direct search, not assumed. Two scope
+calls made explicitly to fit the static-export/no-server constraint:
+Substack side is a **human-reviewed queue** (`data/queue.md`), not automated
+posting — no official Substack Notes API exists, and automating it would mean
+storing a session secret, which this stays away from entirely; card images
+are **build-time static generation** (satori + `@resvg/resvg-js`, not
+Playwright — avoids a ~300MB Chromium download in CI, matches the "no new
+infra" posture).
+
+Shipped: `data/changelog.json` (manually appended per status change),
+`scripts/generate-content.ts` (renders a 1200×630 black/white PNG per
+unpublished entry to `public/cards/<id>.png`, appends a section to
+`data/queue.md`, writes `public/feed.json`, marks entries `published: true` —
+idempotent on rerun, verified by running it twice), `app/changes/page.tsx`
+(reuses the glyph/label convention from `lib/statusMeta.ts`), a CI step in
+`.github/workflows/nextjs-deploy.yml` running `npm run generate:content`
+before the build (as an idempotent safety net — the actual review gate stays
+local: edit the changelog, run the script, review the PNGs and
+`data/queue.md`, commit, push).
+
+One build-time wrinkle worth recording: Arimo (the embedded body font) is
+missing the △ (at-risk) and ◇ (stalled) glyphs — satori has no automatic
+system-font fallback the way browsers do, so those rendered as tofu boxes
+until `public/fonts/NotoSansSymbols2-Regular.ttf` was added as a fallback
+font in `scripts/generate-content.ts`. Verified glyph coverage directly via
+`opentype.js` cmap inspection before committing to that font, rather than
+trusting it would work from a visual glance.
+
+Verified end to end: two synthetic changelog entries covering all seven
+Platform/Legislation status glyphs were generated, rendered (visually
+confirmed, no color, correct glyph pairing), queued, marked published, and
+rerun for idempotency (zero duplicate output) — then removed, since they
+were test fixtures, not real content. `data/changelog.json` and
+`public/feed.json` ship as `[]`; the first real entry is the next status
+change on either tracker.
+
+As of this writing these changes are made on disk but not yet committed —
+no commit hash to cite here; add one when this actually ships.
