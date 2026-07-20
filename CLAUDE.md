@@ -267,20 +267,53 @@ If GitHub Pages ever needs re-enabling for this repo again (e.g. after a visibil
 
 ---
 
+## 12. Ground truth, verified not assumed
+
+- **Live:** `justoffline.github.io/Off-LineNews-next` — Platform Tracker (12 entries), strict grayscale status convention, CI smoke-test on deploy. Commits `598c959`, `6a9ed22`.
+- **Not yet built:** Legislation Tracker on the new site, SQLite migration (`data/tracker.db`, `lib/db.ts`), `articles`/`clusters` tables, zettelkasten graph, corroboration engine (`update_tracker.py`, PR-gated).
+- **Production `justoffline.github.io/Off-LineNews`** (the old hand-written `index.html` site) is currently 404 — Pages source was flipped to "GitHub Actions" but no workflow has run since. This is a separate, smaller open item — see §19.
+- Repo is public (required for free GitHub Pages). `data/tracker.db` is planned to be committed as source of truth per the original §3/§4 decision.
+
+---
+
+## 13. Now (current sprint — static architecture, no new infra, no new accounts)
+
+Three additions below fit the current static-site architecture (content/data layer only, no new backend/hosting/accounts): a Reports tab (basic graphs of article release frequency by topic/pillar), SEO-friendly content structure for future indexing, and social share affordances on cards/articles. All three, plus a Substack signup CTA, slot into the existing build-time-render model the same way the Platform Tracker increment did — no architectural change required.
+
+The SQLite migration is sequenced *after* the Legislation Tracker increment rather than before it: seeding `data/tracker.db` from `index.html` naturally covers both the `platforms` and `legislation` tables in one migration pass, so hand-copying Legislation into its own `lib/legislation.ts` first (mirroring the already-proven `lib/platforms.ts` recipe) means the migration script has two real, already-rendered tables to seed from and diff against — not one plus a table nobody's looked at yet on the new site.
+
+| Item | What "done" means | Depends on |
+|---|---|---|
+| Legislation Tracker content increment | Same recipe as Platform Tracker: `lib/legislation.ts` (10 rows), `LegislationRow.tsx`, rendered on `/`, same 3-layer verification | none — can start immediately |
+| SQLite migration (`data/tracker.db`) | `scripts/db.py`, `scripts/migrate_seed_db.py` seed both tables from `index.html`; `lib/db.ts` reads at build time; `lib/platforms.ts`/`lib/legislation.ts` retired | Legislation increment done first (seed both tables in one pass, see reasoning above) |
+| Reports tab v1 | Static bar chart (shadcn Chart/Recharts, build-time data) — article count by pillar over time, sourced from the `articles` table once it exists | SQLite migration |
+| SEO foundation | Per-page `<title>`/meta description, OpenGraph tags, `sitemap.xml`, `robots.txt` generated at build time — no submission/indexing automation yet, just correct markup | none |
+| Social share affordance | Static share links (X/LinkedIn/copy-link intent URLs) on each card — no API posting, just outbound share buttons | none |
+| Substack signup CTA | One link/button in footer or hero, per the original Notion note | none |
+
+---
+
 ## Kickoff prompt (paste this into Claude Code in this repo)
 
 ```
-Read CLAUDE.md in full before doing anything else, including §0.1 — Phase 1
-(scaffold + deploy) is done, this repo is the live working repo.
+Read CLAUDE.md in full before doing anything else, including §0.1, §12, and
+§13 — Phase 1 is done and the Platform Tracker content increment already
+shipped (live, verified, see §12). This is a sprint in progress, not a
+fresh start.
 
-Next unit of work is Phase 2 (§7, step 2): scripts/db.py (SQLite schema)
-and scripts/migrate_seed_db.py, seeding data/tracker.db from this repo's
-own index.html — its 12 platform cards and 10 legislation rows are still
-intact and unmutated (the automation that used to touch it was removed,
-see §0.1 incident 1). Manually diff the migration script's printed summary
-against index.html before trusting the seed.
+Next unit of work per §13: the Legislation Tracker content increment
+(lib/legislation.ts, LegislationRow.tsx, same 3-layer verification as the
+Platform Tracker increment). Only after that's done and confirmed, move to
+the SQLite migration (scripts/db.py, scripts/migrate_seed_db.py, seeding
+both platforms and legislation tables from index.html in one pass, then
+lib/db.ts) — see §13 for why that ordering matters.
 
-Stop and report before moving to Phase 2 step 3 (wiring the DB into the
-Next.js pages), same "stop and confirm between units of work" pattern as
-Phase 1.
+Stop and report after each item in §13's table before starting the next
+one, same "stop and confirm between units of work" pattern as before.
 ```
+
+---
+
+## 19. Open items (tracked separately from the §13 sprint)
+
+**Production Pages still 404.** `justoffline.github.io/Off-LineNews` (the old hand-written `index.html` site — separate repo, `JustOffline/Off-LineNews`) returns 404. The user re-enabled Pages Source → GitHub Actions after an earlier visibility-change incident (§0.1 incident 2 is the same failure mode, different repo), but flipping that setting alone doesn't trigger a deploy — it needs an actual workflow run: either the next scheduled cron run, or a manual "Run workflow" dispatch from that repo's Actions tab. Smaller and unrelated to the `Off-LineNews-next` rebuild; do not fold a fix for this into any §13 work, and do not touch the production repo beyond confirming this.
