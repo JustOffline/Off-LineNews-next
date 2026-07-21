@@ -39,3 +39,14 @@ export interface ChangelogEntry {
   sourceUrl: string;
   published: boolean;
 }
+
+export interface Article {
+  id: string;
+  title: string;
+  link: string;
+  summary: string;
+  source: string;
+  tags: string[];
+  date: string; // ISO 8601 UTC, "" if unparseable
+  fetchedAt: string; // ISO 8601 UTC, the run that selected this entry
+}

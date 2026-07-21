@@ -1,0 +1,56 @@
+name: Fetch Daily News
+
+# This repo (Off-LineNews-next) is the isolated rebuild sibling per
+# CLAUDE.md §10.1 -- this workflow, its dedup cache (data/news-seen.json),
+# and its output (data/articles.json) are all scoped to this repo only and
+# are deliberately named differently from the production repo's equivalents
+# (scripts/seen_guids.json, main.yml) so a stray carried-over file would be
+# immediately recognizable as foreign, per the incident logged in §0.1.
+# This script never touches index.html.
+
+on:
+  schedule:
+    - cron: "0 7 * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: "fetch-news"
+  cancel-in-progress: false
+
+jobs:
+  fetch-and-commit:
+    name: Fetch news & commit
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # The script uses only the standard library -- no pip install needed.
+      - name: Fetch news
+        run: python scripts/fetch_news.py
+
+      - name: Commit updated files
+        run: |
+          git config user.name  "Off-Line News Bot (next)"
+          git config user.email "actions@github.com"
+
+          git add data/articles.json data/news-seen.json
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit -- news is unchanged since last run."
+          else
+            TIMESTAMP=$(date -u '+%Y-%m-%d %H:%M UTC')
+            git commit -m "chore: auto-update news [${TIMESTAMP}]"
+            git push
+            echo "Changes pushed -- nextjs-deploy.yml will pick this up automatically."
+          fi
