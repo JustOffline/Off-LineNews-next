@@ -269,8 +269,8 @@ If GitHub Pages ever needs re-enabling for this repo again (e.g. after a visibil
 
 ## 12. Ground truth, verified not assumed
 
-- **Live:** `justoffline.github.io/Off-LineNews-next` — Platform Tracker (12 entries), strict grayscale status convention, CI smoke-test on deploy. Commits `598c959`, `6a9ed22`.
-- **Not yet built:** Legislation Tracker on the new site, SQLite migration (`data/tracker.db`, `lib/db.ts`), `articles`/`clusters` tables, zettelkasten graph, corroboration engine (`update_tracker.py`, PR-gated).
+- **Live:** `justoffline.github.io/Off-LineNews-next` — Platform Tracker (12) + Legislation Tracker (10), strict grayscale status convention, `/news` (daily real-news feed, cron'd), `/changes` (Content Engine Connector), per-page SEO metadata + sitemap/robots, CI on Node 24 with zero deprecation warnings. See §20–§22 for what shipped and how each was verified.
+- **Not yet built:** SQLite migration (`data/tracker.db`, `lib/db.ts` — schema drafted in `scripts/schema.sql`, but blocked: `better-sqlite3` needs a native build toolchain not present on the primary dev machine, see §22), `articles`/`clusters` tables, zettelkasten graph, corroboration engine (`update_tracker.py`, PR-gated), OpenGraph tags, Reports tab, Social share affordance, Substack signup CTA.
 - **Production `justoffline.github.io/Off-LineNews`** (the old hand-written `index.html` site) is currently 404 — Pages source was flipped to "GitHub Actions" but no workflow has run since. This is a separate, smaller open item — see §19.
 - Repo is public (required for free GitHub Pages). `data/tracker.db` is planned to be committed as source of truth per the original §3/§4 decision.
 
@@ -284,10 +284,10 @@ The SQLite migration is sequenced *after* the Legislation Tracker increment rath
 
 | Item | What "done" means | Depends on |
 |---|---|---|
-| Legislation Tracker content increment | Same recipe as Platform Tracker: `lib/legislation.ts` (10 rows), `LegislationRow.tsx`, rendered on `/`, same 3-layer verification | none — can start immediately |
-| SQLite migration (`data/tracker.db`) | `scripts/db.py`, `scripts/migrate_seed_db.py` seed both tables from `index.html`; `lib/db.ts` reads at build time; `lib/platforms.ts`/`lib/legislation.ts` retired | Legislation increment done first (seed both tables in one pass, see reasoning above) |
+| ~~Legislation Tracker content increment~~ | **Done** — see §20 | — |
+| SQLite migration (`data/tracker.db`) | `scripts/schema.sql` **done** (§22); still needed: `scripts/db.py`, `scripts/migrate_seed_db.py` to seed both tables from `index.html`; `lib/db.ts` reads at build time; `lib/platforms.ts`/`lib/legislation.ts` retired | **Blocked**: `better-sqlite3` has no prebuilt binary and needs a working native-build toolchain (Visual Studio Build Tools + C++ workload on Windows) not present on the primary dev machine as of §22 — resolve this before starting |
 | Reports tab v1 | Static bar chart (shadcn Chart/Recharts, build-time data) — article count by pillar over time, sourced from the `articles` table once it exists | SQLite migration |
-| SEO foundation | Per-page `<title>`/meta description, OpenGraph tags, `sitemap.xml`, `robots.txt` generated at build time — no submission/indexing automation yet, just correct markup | none |
+| SEO foundation | Per-page `<title>`/meta description **done** (§22), `sitemap.xml`/`robots.txt` **done** (§22); still open: OpenGraph tags/images | none |
 | Social share affordance | Static share links (X/LinkedIn/copy-link intent URLs) on each card — no API posting, just outbound share buttons | none |
 | Substack signup CTA | One link/button in footer or hero, per the original Notion note | none |
 
@@ -296,20 +296,21 @@ The SQLite migration is sequenced *after* the Legislation Tracker increment rath
 ## Kickoff prompt (paste this into Claude Code in this repo)
 
 ```
-Read CLAUDE.md in full before doing anything else, including §0.1, §12, and
-§13 — Phase 1 is done and the Platform Tracker content increment already
-shipped (live, verified, see §12). This is a sprint in progress, not a
-fresh start.
+Read CLAUDE.md in full before doing anything else, especially §13, §20,
+§21, §22 -- several increments have shipped since the last kickoff prompt
+was written. Do not re-derive project history from chat; it's all in the
+file.
 
-Next unit of work per §13: the Legislation Tracker content increment
-(lib/legislation.ts, LegislationRow.tsx, same 3-layer verification as the
-Platform Tracker increment). Only after that's done and confirmed, move to
-the SQLite migration (scripts/db.py, scripts/migrate_seed_db.py, seeding
-both platforms and legislation tables from index.html in one pass, then
-lib/db.ts) — see §13 for why that ordering matters.
+Next unit of work: Substack signup CTA (§13 -- one link/button in footer
+or hero, no API, no dependency). Smallest unblocked item on the board --
+do this one first, not Social share affordance, not SQLite.
 
-Stop and report after each item in §13's table before starting the next
-one, same "stop and confirm between units of work" pattern as before.
+The SQLite migration is NOT next -- it's blocked on installing Visual
+Studio Build Tools (§22) before better-sqlite3 can even be added as a
+dependency; don't attempt it until that's resolved.
+
+Stop and report when it's done, same 3-layer verification pattern as prior
+increments (build succeeds, rendered output checked, live site confirmed).
 ```
 
 ---
@@ -373,6 +374,117 @@ rerun for idempotency (zero duplicate output) — then removed, since they
 were test fixtures, not real content. `data/changelog.json` and
 `public/feed.json` ship as `[]`; the first real entry is the next status
 change on either tracker.
+
+---
+
+## 21. Daily real-news headline feed — ground truth (retroactively documented)
+
+Shipped in a prior session but never written up here until now — flagging
+that gap rather than leaving it silently undocumented.
+
+**News feed only, scoped deliberately** — no auto-detection of tracker
+status changes from this feed, no auto-generated quote cards from it. That
+richer version was explicitly deferred after being flagged as this
+project's own documented "single biggest liability risk" (§1) if done
+without human review.
+
+`scripts/fetch_news.py` ports the production repo's proven RSS fetch/
+filter/dedup logic (same feeds, keywords, tag rules) but writes structured
+`data/articles.json` instead of injecting HTML, and has no code path that
+touches `index.html` at all — that file stays a read-only migration source
+in this repo per §0.1. Its dedup cache (`data/news-seen.json`) is
+deliberately named differently from the production repo's
+`scripts/seen_guids.json` so a stray carried-over file would be immediately
+recognizable as foreign, avoiding a repeat of the §0.1 incident.
+
+`app/news/page.tsx` + `components/dashboard/NewsCard.tsx` render the feed.
+`.github/workflows/fetch-news.yml` runs the fetch daily (`0 7 * * *`) plus
+`workflow_dispatch`, commits directly (a headline roundup carries far lower
+claim-risk than a ban/legislation status claim, so no PR-gating here) — that
+push triggers the existing `nextjs-deploy.yml` build automatically.
+
+**Live and running**: confirmed via real scheduled cron runs, not just a
+manual trigger — e.g. commits `d9d4a95`, `efa425e` are genuine unattended
+daily fetches, not test runs.
+
+---
+
+## 22. News polish, CI Node-24 modernization, UI dedupe, SQLite/SEO groundwork
+
+**Timestamps**: `NewsCard.tsx` shows exact UTC date+time (not visitor-local
+— this is a global feed about bans across timezones, and the fetch cron
+itself runs on UTC). `/news` shows a "Last updated" line derived from the
+newest `fetchedAt` across all articles — no new top-level field, avoids a
+second source of truth that could drift.
+
+**CI modernized to Node 24** across both workflows — `actions/checkout`
+v4→v7.0.1, `actions/setup-node` v4→v7.0.0 (`node-version` 20→24),
+`actions/configure-pages` v5→v6.0.0, `actions/upload-pages-artifact`
+v3→v5.0.0, `actions/deploy-pages` v4→v5.0.0, `actions/setup-python`
+v5→v7.0.0 — every version verified directly against the GitHub API's
+`releases/latest` endpoint and each release's `action.yml` `using:` field,
+not guessed and not trusted from web-search summaries (confirmed stale
+during this research). `package.json` gets `engines.node: ">=24"` and
+`@types/node` bumped to match.
+
+**Real risk, actually verified, not just inspected**: `scripts/generate-content.ts`
+depends on `@resvg/resvg-js`, a native binding, and runs in the same
+`nextjs-deploy.yml` job this bump touches — exactly the kind of change that
+can silently break a native module. Dry-run branch (`ci-node24-and-polish`)
+confirmed via `workflow_dispatch`, including a temporary real changelog
+entry to force the actual satori/resvg render path (not just the no-op
+"nothing to publish" path) — GitHub's Node 24 runner produced a valid PNG
+("Generated 1 card(s)..."), zero deprecation warnings remained. One
+unrelated finding along the way: GitHub Pages environment protection
+correctly refuses to deploy from any non-`main` branch — expected, not a
+bug, and it means the `Deploy to GitHub Pages` job can never be dry-run
+directly; only the `Build` job (which contains the actual risk) can be.
+
+**`components/ui/card.tsx`** added — de-duplicates the exact class string
+`"flex flex-col gap-2 border border-border p-4"`, previously hand-copied
+across `PlatformCard.tsx`, `NewsCard.tsx`, and `app/changes/page.tsx`. Takes
+an `as` prop (default `div`) so call sites keep `<article>` semantics rather
+than quietly downgrading them. Confirmed pixel-identical rendered output.
+
+**SQLite: schema only, not the migration.** `scripts/schema.sql` — DDL for
+`platforms`, `legislation`, `articles`, derived directly from the real,
+current `lib/types.ts` interfaces (not from the "prior plan"'s
+`status_signals`/`clusters` schema referenced in §1/§6, which isn't
+available in any session and isn't fabricated from memory). Verified by
+loading it into an in-memory DB via Python's stdlib `sqlite3` — parses
+cleanly. **`better-sqlite3` is deliberately NOT yet a dependency** — local
+install failed outright: its install script is a hardcoded `node-gyp
+rebuild` with no prebuilt-binary fallback at all, and the dev machine used
+this session has no Visual Studio Build Tools for node-gyp to compile
+against. npm rolled back cleanly, nothing left broken. This is a real,
+load-bearing blocker for whoever picks up the actual SQLite migration next
+— resolve it (install VS Build Tools with the C++ workload, or migrate on
+a machine/CI environment that already has a working native-build
+toolchain) before attempting that increment, don't rediscover this the
+hard way.
+
+**SEO: groundwork, not the full pass.** Per-page `title`/`description` on
+`/news` and `/changes` (via `app/layout.tsx`'s new title template),
+`app/robots.ts` + `app/sitemap.ts` (Next.js metadata route conventions —
+required `export const dynamic = "force-static"` on both, since
+`output:"export"` doesn't infer these routes are static-safe on its own and
+the build fails without it; hit this directly, not assumed). Verified in
+the actual built output: distinct `<title>` per route,
+`out/robots.txt`/`out/sitemap.xml` both exist with correct
+`justoffline.github.io/Off-LineNews-next/...` URLs. OpenGraph tags/images
+explicitly deferred — genuinely "next," not cheap groundwork.
+
+**Separately flagged, not addressed this round**: `npm install` surfaced 8
+audit vulnerabilities (4 moderate, 4 high) during the `@types/node` bump.
+`npm audit fix --force` can introduce its own breaking changes and deserves
+a deliberately reviewed pass, not a drive-by fix riding on this bundle.
+
+Shipped via 4 commits on branch `ci-node24-and-polish`, dry-run verified,
+merged to `main` at `5d4d876` (merge commit; underlying commits `c7bb02a`,
+`76fd51d`, `39e3144`, `45dfd25`). Live and confirmed: `/news` shows UTC
+timestamps and a last-updated line, `/`, `/news`, `/changes` render
+pixel-identical to before the dedupe, `sitemap.xml`/`robots.txt` resolve
+correctly on the deployed site.
 
 As of this writing these changes are made on disk but not yet committed —
 no commit hash to cite here; add one when this actually ships.
