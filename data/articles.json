@@ -1,5 +1,31 @@
 [
   {
+    "id": "85c09195f3468c3da3bd17c1ee371835",
+    "title": "Government Lawyers Say Trump Admin Can Use TikTok Again Because \u2018Owned\u2019 No Longer Means \u2018Owned\u2019",
+    "link": "https://www.techdirt.com/2026/07/23/government-lawyers-say-trump-admin-can-use-tiktok-again-because-owned-no-longer-means-owned/",
+    "summary": "We spent a few years pointing out the ridiculousness of the whole \u201cTikTok ban\u201d moral panic, and the fact that all of the \u201cconcerns\u201d magically melted away after Trump became president and then effectively gifted a\u2026",
+    "source": "Techdirt",
+    "tags": [
+      "TikTok"
+    ],
+    "date": "2026-07-23T18:19:03+00:00",
+    "fetchedAt": "2026-07-23T19:31:54.206820+00:00"
+  },
+  {
+    "id": "2b6b48e2327069b649b9c6a48e9b5753",
+    "title": "New EU Court of Justice Ruling on Platform Liability Could Cause Collateral Damage to Freedom of Expression",
+    "link": "https://www.eff.org/deeplinks/2026/07/new-eu-court-justice-ruling-platform-liability-could-cause-collateral-damage",
+    "summary": "Intermediary liability laws around the world recognize that social media platforms, search engines, and other online service providers have become an integral part of our lives: they shape how we access information\u2026",
+    "source": "EFF",
+    "tags": [
+      "Facebook",
+      "YouTube",
+      "DSA"
+    ],
+    "date": "2026-07-22T08:34:12+00:00",
+    "fetchedAt": "2026-07-23T19:31:54.206820+00:00"
+  },
+  {
     "id": "94ccb4cd25940948011ad81df7f1bf34",
     "title": "Ofcom unable to take further legal action against suicide forum",
     "link": "https://www.bbc.co.uk/news/articles/c3d3ejgdm20o?at_medium=RSS&at_campaign=rss",
@@ -127,18 +153,6 @@
       "Age Verification"
     ],
     "date": "2026-06-25T06:40:07+00:00",
-    "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
-  },
-  {
-    "id": "2b13b06c578a8b532210ae288ac3483d",
-    "title": "\ud83e\udd85 Domestic Spying Takes an L | EFFector 38.12",
-    "link": "https://www.eff.org/deeplinks/2026/06/domestic-spying-takes-l-effector-3812",
-    "summary": "Sold to the public as a foreign surveillance tool, Section 702 is the law has let intelligence agencies spy on millions of Americans\u2019 private conversations without a warrant. Despite years of revelations about this\u2026",
-    "source": "EFF",
-    "tags": [
-      "Age Restriction"
-    ],
-    "date": "2026-06-24T16:20:33+00:00",
     "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
   }
 ]
