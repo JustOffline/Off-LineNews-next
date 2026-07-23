@@ -1,13 +1,1 @@
-[
-  {
-    "id": "ci-node24-verify",
-    "date": "2026-07-23",
-    "pillar": "platforms",
-    "entity": "Node24VerifyTest",
-    "previousStatus": "monitoring",
-    "newStatus": "restricted",
-    "detail": "Temporary entry verifying satori/resvg render correctly on GitHub's actual Node 24 runner, not just locally.",
-    "sourceUrl": "https://example.com/ci-verify",
-    "published": false
-  }
-]
+[]
