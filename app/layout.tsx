@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Off-Line® News",
+  title: {
+    default: "Off-Line® News",
+    template: "%s — Off-Line® News",
+  },
   description: "No spin. Just status.",
 };
 
