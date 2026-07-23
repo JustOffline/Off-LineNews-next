@@ -1,11 +1,12 @@
 import type { Platform } from "@/lib/types";
 import { PLATFORM_STATUS_META } from "@/lib/statusMeta";
+import { Card } from "@/components/ui/card";
 
 export function PlatformCard({ platform }: { platform: Platform }) {
   const { glyph, label } = PLATFORM_STATUS_META[platform.status];
 
   return (
-    <article className="flex flex-col gap-2 border border-border p-4">
+    <Card as="article">
       <div className="flex items-center justify-between gap-2">
         <h3 className="text-sm font-semibold tracking-tight">{platform.name}</h3>
         <span className="flex items-center gap-1 text-xs font-medium tracking-wide">
@@ -26,6 +27,6 @@ export function PlatformCard({ platform }: { platform: Platform }) {
           {platform.sourceName} ↗
         </a>
       </div>
-    </article>
+    </Card>
   );
 }

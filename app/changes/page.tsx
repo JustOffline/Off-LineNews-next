@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import changelogData from "@/data/changelog.json";
 import type { ChangelogEntry } from "@/lib/types";
 import { PLATFORM_STATUS_META, LEGISLATION_STATUS_META } from "@/lib/statusMeta";
+import { Card } from "@/components/ui/card";
+
+export const metadata: Metadata = {
+  title: "Status Changes",
+  description: "Every tracker status change, in order, with source.",
+};
 
 const changelog = changelogData as ChangelogEntry[];
 
@@ -40,10 +47,7 @@ export default function ChangesPage() {
             const prev = statusMeta(entry.previousStatus);
             const next = statusMeta(entry.newStatus);
             return (
-              <article
-                key={entry.id}
-                className="flex flex-col gap-2 border border-border p-4"
-              >
+              <Card as="article" key={entry.id}>
                 <div className="flex items-center justify-between gap-2">
                   <h2 className="text-sm font-semibold tracking-tight">
                     {entry.entity}
@@ -70,7 +74,7 @@ export default function ChangesPage() {
                 >
                   Source ↗
                 </a>
-              </article>
+              </Card>
             );
           })}
         </section>
