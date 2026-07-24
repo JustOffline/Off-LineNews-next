@@ -1,5 +1,17 @@
 [
   {
+    "id": "a417a06e99563a47b7bb2366ad61127f",
+    "title": "\u2018Collapsed\u2019: Roadblocks, internet blackout leave Pakistani Kashmir in limbo",
+    "link": "https://www.aljazeera.com/features/2026/7/24/collapsed-roadblocks-internet-blackout-leave-pakistani-kashmir-in-limbo?traffic_source=rss",
+    "summary": "Residents describe mounting hardship, as internet restrictions and road closures stretch into second month before polls.",
+    "source": "Al Jazeera",
+    "tags": [
+      "Shutdown"
+    ],
+    "date": "2026-07-24T06:01:39+00:00",
+    "fetchedAt": "2026-07-24T09:14:55.987051+00:00"
+  },
+  {
     "id": "85c09195f3468c3da3bd17c1ee371835",
     "title": "Government Lawyers Say Trump Admin Can Use TikTok Again Because \u2018Owned\u2019 No Longer Means \u2018Owned\u2019",
     "link": "https://www.techdirt.com/2026/07/23/government-lawyers-say-trump-admin-can-use-tiktok-again-because-owned-no-longer-means-owned/",
@@ -139,20 +151,6 @@
       "Child Safety"
     ],
     "date": "2026-06-30T08:08:47+00:00",
-    "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
-  },
-  {
-    "id": "8d2fc861900f2b0160a80512ad0737e8",
-    "title": "The KIDS Act Would Require Age Checks To Get Online",
-    "link": "https://www.eff.org/deeplinks/2026/06/kids-act-would-require-age-checks-get-online",
-    "summary": "Within the next week, Congress is preparing to vote on the KIDS Act , a sprawling package of legislation that seeks to control Americans\u2019 web browsing and private messaging. The package includes a revised version of the\u2026",
-    "source": "EFF",
-    "tags": [
-      "Online Safety",
-      "Australia",
-      "Age Verification"
-    ],
-    "date": "2026-06-25T06:40:07+00:00",
     "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
   }
 ]
