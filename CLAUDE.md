@@ -270,7 +270,7 @@ If GitHub Pages ever needs re-enabling for this repo again (e.g. after a visibil
 ## 12. Ground truth, verified not assumed
 
 - **Live:** `justoffline.github.io/Off-LineNews-next` — Platform Tracker (12) + Legislation Tracker (10), strict grayscale status convention, `/news` (daily real-news feed, cron'd), `/changes` (Content Engine Connector), per-page SEO metadata + sitemap/robots, CI on Node 24 with zero deprecation warnings. See §20–§22 for what shipped and how each was verified.
-- **Not yet built:** SQLite migration (`data/tracker.db`, `lib/db.ts` — schema drafted in `scripts/schema.sql`, but blocked: `better-sqlite3` needs a native build toolchain not present on the primary dev machine, see §22), `articles`/`clusters` tables, zettelkasten graph, corroboration engine (`update_tracker.py`, PR-gated), OpenGraph tags, Reports tab, Social share affordance, Substack signup CTA.
+- **Not yet built:** SQLite migration (`data/tracker.db`, `lib/db.ts` — schema drafted in `scripts/schema.sql`, but blocked: `better-sqlite3` needs a native build toolchain not present on the primary dev machine, see §22), `articles`/`clusters` tables, zettelkasten graph, corroboration engine (`update_tracker.py`, PR-gated), OpenGraph tags, Reports tab, Social share affordance.
 - **Production `justoffline.github.io/Off-LineNews`** (the old hand-written `index.html` site) is currently 404 — Pages source was flipped to "GitHub Actions" but no workflow has run since. This is a separate, smaller open item — see §19.
 - Repo is public (required for free GitHub Pages). `data/tracker.db` is planned to be committed as source of truth per the original §3/§4 decision.
 
@@ -289,7 +289,7 @@ The SQLite migration is sequenced *after* the Legislation Tracker increment rath
 | Reports tab v1 | Static bar chart (shadcn Chart/Recharts, build-time data) — article count by pillar over time, sourced from the `articles` table once it exists | SQLite migration |
 | SEO foundation | Per-page `<title>`/meta description **done** (§22), `sitemap.xml`/`robots.txt` **done** (§22); still open: OpenGraph tags/images | none |
 | Social share affordance | Static share links (X/LinkedIn/copy-link intent URLs) on each card — no API posting, just outbound share buttons | none |
-| Substack signup CTA | One link/button in footer or hero, per the original Notion note | none |
+| ~~Substack signup CTA~~ | **Done** — see §23 | — |
 
 ---
 
@@ -297,13 +297,13 @@ The SQLite migration is sequenced *after* the Legislation Tracker increment rath
 
 ```
 Read CLAUDE.md in full before doing anything else, especially §13, §20,
-§21, §22 -- several increments have shipped since the last kickoff prompt
-was written. Do not re-derive project history from chat; it's all in the
-file.
+§21, §22, §23 -- several increments have shipped since the last kickoff
+prompt was written. Do not re-derive project history from chat; it's all
+in the file.
 
-Next unit of work: Substack signup CTA (§13 -- one link/button in footer
-or hero, no API, no dependency). Smallest unblocked item on the board --
-do this one first, not Social share affordance, not SQLite.
+Next unit of work: Social share affordance (§13 -- static X/LinkedIn/
+copy-link intent URLs on each card, no API posting). Smallest unblocked
+item left on the board now that the Substack signup CTA is done (§23).
 
 The SQLite migration is NOT next -- it's blocked on installing Visual
 Studio Build Tools (§22) before better-sqlite3 can even be added as a
@@ -488,3 +488,30 @@ correctly on the deployed site.
 
 As of this writing these changes are made on disk but not yet committed —
 no commit hash to cite here; add one when this actually ships.
+
+---
+
+## 23. Substack signup CTA — done
+
+`components/layout/Footer.tsx` (new, matches §4's originally planned but
+never-built `layout/` directory) — a site-wide footer mounted in
+`app/layout.tsx` as a sibling after `{children}` inside `<body>`, so it
+renders on every route (`/`, `/news`, `/changes`), not hero-only. Links to
+`https://justoffline.substack.com/`, styled as a button via the exported
+`buttonVariants()` from `components/ui/button.tsx` applied directly to a
+plain `<a target="_blank" rel="noopener noreferrer">` — `Button` wraps
+`@base-ui/react/button`, which has no Radix-style `asChild` prop, so this
+is the correct way to get button visuals on a real anchor tag. This is
+deliberately the first button-styled outbound link in the codebase; every
+other outbound link (`PlatformCard.tsx`, `LegislationRow.tsx`,
+`NewsCard.tsx`, `app/changes/page.tsx`) stays a plain underlined `<a>` per
+the existing convention.
+
+Verified end to end, not just build-passed: `npm run build` succeeded;
+the rendered static export's anchor `class` attribute was checked directly
+and confirmed as the solid `bg-primary text-primary-foreground` button
+variant, not the `underline underline-offset-2` link convention; shipped
+as commit `1ddffc7` on `main`, `nextjs-deploy.yml` ran green, and the live
+deployed site (not just CI) was independently `curl`'d at `/`, `/news/`,
+and `/changes/` on `https://justoffline.github.io/Off-LineNews-next/` to
+confirm each page actually serves the `justoffline.substack.com` link.
