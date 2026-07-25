@@ -10,7 +10,7 @@ const BASE_URL = "https://justoffline.github.io/Off-LineNews-next";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/news", "/changes"];
+  const routes = [""];
 
   return routes.map((route) => ({
     url: `${BASE_URL}${route}/`,

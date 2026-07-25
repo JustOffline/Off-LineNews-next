@@ -269,7 +269,7 @@ If GitHub Pages ever needs re-enabling for this repo again (e.g. after a visibil
 
 ## 12. Ground truth, verified not assumed
 
-- **Live:** `justoffline.github.io/Off-LineNews-next` — Platform Tracker (12) + Legislation Tracker (10), strict grayscale status convention, `/news` (daily real-news feed, cron'd), `/changes` (Content Engine Connector), per-page SEO metadata + sitemap/robots, CI on Node 24 with zero deprecation warnings. See §20–§22 for what shipped and how each was verified.
+- **Live:** `justoffline.github.io/Off-LineNews-next` — single page, everything on one URL (see §24): Platform Tracker (12), Legislation Tracker (10), Latest News (daily real-news feed, cron'd), Status Changes (Content Engine Connector), strict grayscale status convention, sitemap/robots (now one-URL sitemap), CI on Node 24 with zero deprecation warnings. See §20–§24 for what shipped and how each was verified.
 - **Not yet built:** SQLite migration (`data/tracker.db`, `lib/db.ts` — schema drafted in `scripts/schema.sql`, but blocked: `better-sqlite3` needs a native build toolchain not present on the primary dev machine, see §22), `articles`/`clusters` tables, zettelkasten graph, corroboration engine (`update_tracker.py`, PR-gated), OpenGraph tags, Reports tab, Social share affordance.
 - **Production `justoffline.github.io/Off-LineNews`** (the old hand-written `index.html` site) is currently 404 — Pages source was flipped to "GitHub Actions" but no workflow has run since. This is a separate, smaller open item — see §19.
 - Repo is public (required for free GitHub Pages). `data/tracker.db` is planned to be committed as source of truth per the original §3/§4 decision.
@@ -287,7 +287,7 @@ The SQLite migration is sequenced *after* the Legislation Tracker increment rath
 | ~~Legislation Tracker content increment~~ | **Done** — see §20 | — |
 | SQLite migration (`data/tracker.db`) | `scripts/schema.sql` **done** (§22); still needed: `scripts/db.py`, `scripts/migrate_seed_db.py` to seed both tables from `index.html`; `lib/db.ts` reads at build time; `lib/platforms.ts`/`lib/legislation.ts` retired | **Blocked**: `better-sqlite3` has no prebuilt binary and needs a working native-build toolchain (Visual Studio Build Tools + C++ workload on Windows) not present on the primary dev machine as of §22 — resolve this before starting |
 | Reports tab v1 | Static bar chart (shadcn Chart/Recharts, build-time data) — article count by pillar over time, sourced from the `articles` table once it exists | SQLite migration |
-| SEO foundation | Per-page `<title>`/meta description **done** (§22), `sitemap.xml`/`robots.txt` **done** (§22); still open: OpenGraph tags/images | none |
+| SEO foundation | Per-page `<title>`/meta description **done for `/news`/`/changes` in §22, retired in §24** when those routes merged into `/` — now one title/description for the whole site; `sitemap.xml`/`robots.txt` **done** (§22, sitemap now lists one URL per §24); still open: OpenGraph tags/images | none |
 | Social share affordance | Static share links (X/LinkedIn/copy-link intent URLs) on each card — no API posting, just outbound share buttons | none |
 | ~~Substack signup CTA~~ | **Done** — see §23 | — |
 
@@ -297,13 +297,17 @@ The SQLite migration is sequenced *after* the Legislation Tracker increment rath
 
 ```
 Read CLAUDE.md in full before doing anything else, especially §13, §20,
-§21, §22, §23 -- several increments have shipped since the last kickoff
-prompt was written. Do not re-derive project history from chat; it's all
-in the file.
+§21, §22, §23, §24 -- several increments have shipped since the last
+kickoff prompt was written, including a site-architecture change (§24:
+/news and /changes no longer exist as routes, everything lives on one
+page at /). Do not re-derive project history from chat; it's all in the
+file.
 
 Next unit of work: Social share affordance (§13 -- static X/LinkedIn/
 copy-link intent URLs on each card, no API posting). Smallest unblocked
 item left on the board now that the Substack signup CTA is done (§23).
+Note the cards it targets (NewsCard, PlatformCard, changelog entries) all
+now render on the single homepage per §24, not on separate routes.
 
 The SQLite migration is NOT next -- it's blocked on installing Visual
 Studio Build Tools (§22) before better-sqlite3 can even be added as a
@@ -515,3 +519,55 @@ as commit `1ddffc7` on `main`, `nextjs-deploy.yml` ran green, and the live
 deployed site (not just CI) was independently `curl`'d at `/`, `/news/`,
 and `/changes/` on `https://justoffline.github.io/Off-LineNews-next/` to
 confirm each page actually serves the `justoffline.substack.com` link.
+
+---
+
+## 24. Single-URL consolidation — /news and /changes merged into /
+
+**Why**: right after the §23 CTA and the news-timestamp visibility work
+shipped, the user checked only the root URL and didn't see either — because
+both lived on `/news`, a separate route. Investigating turned up a real
+gap, not just a misunderstanding: there was **zero on-site navigation**
+anywhere in the app (confirmed by grepping the whole app for `next/link`,
+`<nav`, `href="/news"`, `href="/changes"` — all zero matches; the only
+`<nav>` in the repo is in the legacy `index.html`, which isn't part of the
+live site). `/news` and `/changes` were reachable only via a direct URL or
+`sitemap.xml` — genuinely orphaned pages. Asked directly whether the fix
+should be "add navigation" or "merge everything onto one URL," the user
+was explicit: *"I want all the visible output on 1 main html URL. no sub
+pages should exist with orphaned output."*
+
+**What changed**: `app/news/page.tsx` and `app/changes/page.tsx` are
+deleted — those routes no longer exist (confirmed: `/news/` and
+`/changes/` 404 on the live site, `out/news/` and `out/changes/` don't
+exist in the static export). Their content now renders as two additional
+sections on `app/page.tsx`, after the existing Platform Tracker and
+Legislation Tracker sections, using the same `text-sm font-semibold
+uppercase tracking-widest text-muted-foreground` section-header
+convention: **Latest News** (the `NewsCard` grid, including the
+`Published:`/`Newest article added:`/`Last checked:` work from earlier
+this session) and **Status Changes** (the changelog list, `statusMeta()`
+lookup, `Card` component). `app/sitemap.ts` now lists a single URL.
+
+**Trade-off, named not hidden**: §22 deliberately gave `/news` and
+`/changes` distinct per-page `<title>`/`description` metadata as "SEO
+groundwork." That distinction is gone — the whole site is one page with
+one title/description now. Accepted deliberately: this is a low-traffic
+personal/portfolio project with zero inbound links to those routes at the
+time of the merge (confirmed above), and the user's instruction was
+explicit. No redirect shim was added for the old URLs — they're meant to
+be gone, not hidden-but-reachable, per the "no sub pages" instruction.
+
+**Verified end to end**: `npm run build`'s `Route (app)` summary lists
+only `/`, `/_not-found`, `/robots.txt`, `/sitemap.xml` — no `/news`,
+no `/changes`. In the static export, `out/news/` and `out/changes/` don't
+exist; `out/index.html` contains all four section headers (`Legislation
+Tracker`, `Latest News`, `Status Changes`, plus the pre-existing Platform
+Tracker grid) and 12× `Published:`. `out/sitemap.xml` lists exactly one
+`<url>`. The existing deploy smoke test
+(`.github/workflows/nextjs-deploy.yml`, greps the root URL for "TikTok")
+needed no changes — confirmed unaffected, since "TikTok" still appears via
+the Platform Tracker section and via merged News cards. Live: confirmed
+`https://justoffline.github.io/Off-LineNews-next/` serves all four
+sections and `https://justoffline.github.io/Off-LineNews-next/news/`
+returns 404.
