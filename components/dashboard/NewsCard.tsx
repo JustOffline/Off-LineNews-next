@@ -1,24 +1,13 @@
 import type { Article } from "@/lib/types";
 import { Card } from "@/components/ui/card";
-
-// Rendered in UTC, not visitor-local time: this is a global feed about bans
-// across timezones, and the fetch cron itself runs on UTC — showing
-// visitor-local time would vary per reader and imply a false locality.
-function formatDate(iso: string): string {
-  if (!iso) return "Recent";
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return "Recent";
-  const date = d.toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
-  const time = d.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "UTC" });
-  return `${date}, ${time} UTC`;
-}
+import { formatUtcDateTime } from "@/lib/utils";
 
 export function NewsCard({ article }: { article: Article }) {
   return (
     <Card as="article">
-      <div className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
-        <span>{article.source}</span>
-        <span>{formatDate(article.date)}</span>
+      <div className="flex items-center justify-between gap-2 text-xs">
+        <span className="text-muted-foreground">{article.source}</span>
+        <span className="text-foreground">Published: {formatUtcDateTime(article.date)}</span>
       </div>
       <h3 className="text-sm font-semibold tracking-tight">
         <a

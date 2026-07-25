@@ -50,3 +50,8 @@ export interface Article {
   date: string; // ISO 8601 UTC, "" if unparseable
   fetchedAt: string; // ISO 8601 UTC, the run that selected this entry
 }
+
+export interface NewsSeenCache {
+  seen: string[];
+  updated: string; // ISO 8601 UTC — last time fetch_news.py ran, per save_seen()
+}
