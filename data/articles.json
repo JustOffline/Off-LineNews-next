@@ -1,5 +1,33 @@
 [
   {
+    "id": "98137bb321b9a90ba78aaa307a49c002",
+    "title": "TNR Watch: Cyberattacks as a Tactic of Digital Transnational Repression",
+    "link": "https://freedomhouse.org/article/tnr-watch-cyberattacks-tactic-digital-transnational-repression",
+    "summary": "TNR Watch: Cyberattacks as a Tactic of Digital Transnational Repression zevans@freedom\u2026 Thu, 07/30/2026 - 00:01 Type TNR Watch Image Issues Authoritarian Reach Countering Authoritarianism Technology & Democracy Page\u2026",
+    "source": "Freedom House",
+    "tags": [
+      "Twitter/X",
+      "Facebook",
+      "Instagram"
+    ],
+    "date": "2026-07-30T04:01:30+00:00",
+    "fetchedAt": "2026-07-30T09:24:40.515428+00:00"
+  },
+  {
+    "id": "8f21ce45cc2f356bf2887b4e1044a179",
+    "title": "X Says Australia\u2019s Under-16 Social Media Ban Risks Interfering With Foreign Law",
+    "link": "https://www.wired.com/story/x-says-australias-under-16s-social-media-bans-risk-interfering-with-foreign-law/",
+    "summary": "Elon Musk\u2019s platform attacked the country\u2019s \u201cinvasive\u201d information-gathering powers as it demands the government drop efforts to strengthen its no-children policy.",
+    "source": "Wired",
+    "tags": [
+      "Australia",
+      "Age Restriction",
+      "Child Safety"
+    ],
+    "date": "2026-07-29T13:47:46+00:00",
+    "fetchedAt": "2026-07-30T09:24:40.515428+00:00"
+  },
+  {
     "id": "a417a06e99563a47b7bb2366ad61127f",
     "title": "\u2018Collapsed\u2019: Roadblocks, internet blackout leave Pakistani Kashmir in limbo",
     "link": "https://www.aljazeera.com/features/2026/7/24/collapsed-roadblocks-internet-blackout-leave-pakistani-kashmir-in-limbo?traffic_source=rss",
@@ -123,34 +151,6 @@
       "Age Verification"
     ],
     "date": "2026-07-07T16:17:38+00:00",
-    "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
-  },
-  {
-    "id": "e238abb58a3c09153cd609eb3a5d1b89",
-    "title": "Don\u2019t Leave the Iranian People Behind",
-    "link": "https://freedomhouse.org/article/dont-leave-iranian-people-behind",
-    "summary": "Don\u2019t Leave the Iranian People Behind zevans@freedom\u2026 Tue, 06/30/2026 - 13:56 Type Perspectives Image President Donald Trump signs the Islamabad Memorandum of Understanding between the Islamic Republic of Iran and the\u2026",
-    "source": "Freedom House",
-    "tags": [
-      "Twitter/X",
-      "Facebook",
-      "YouTube"
-    ],
-    "date": "2026-06-30T17:56:48+00:00",
-    "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
-  },
-  {
-    "id": "0063820fd678e83674878ade0709af3c",
-    "title": "LGBT Q&A: What Data Are Companies in the UK Collecting When Verifying My Age?",
-    "link": "https://www.eff.org/deeplinks/2026/06/lgbt-qa-what-data-are-companies-uk-collecting-when-verifying-my-age",
-    "summary": "This Pride, we\u2019re answering all your digital rights questions in season two of our initiative, LGBT Q&A . You Asked: I live in the UK, and we have age verification now on a bunch of websites (including Reddit) and now\u2026",
-    "source": "EFF",
-    "tags": [
-      "TikTok",
-      "Age Verification",
-      "Child Safety"
-    ],
-    "date": "2026-06-30T08:08:47+00:00",
     "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
   }
 ]
