@@ -1,5 +1,45 @@
 [
   {
+    "id": "d05320b6cc7298fa4ce41151db0a8c33",
+    "title": "Amending AB 1709 Doesn\u2019t Fix It: California\u2019s Social Media Ban Still Threatens Free Speech and Privacy",
+    "link": "https://www.eff.org/deeplinks/2026/07/amending-ab-1709-doesnt-fix-it-californias-social-media-ban-still-threatens-free",
+    "summary": "California lawmakers have amended A.B. 1709 , but the core problem remains: the bill is still a ban on social media access for youth under 16 , and it still threatens the privacy and First Amendment rights of all\u2026",
+    "source": "EFF",
+    "tags": [
+      "Censorship",
+      "Age Verification"
+    ],
+    "date": "2026-07-31T19:47:34+00:00",
+    "fetchedAt": "2026-08-01T09:00:02.887627+00:00"
+  },
+  {
+    "id": "1d7852f26a6c44a8ee91e9b2aa178634",
+    "title": "The SCREEN Act Threatens Privacy Far Beyond Adult Websites",
+    "link": "https://www.eff.org/deeplinks/2026/07/screen-act-threatens-privacy-far-beyond-adult-websites",
+    "summary": "The Senate Commerce Committee is set to consider S. 737 , the SCREEN Act, a sweeping age-verification bill that would require online services to verify users\u2019 ages before they can access any sexually explicit content\u2026",
+    "source": "EFF",
+    "tags": [
+      "Age Verification",
+      "VPN"
+    ],
+    "date": "2026-07-31T19:41:55+00:00",
+    "fetchedAt": "2026-08-01T09:00:02.887627+00:00"
+  },
+  {
+    "id": "034d2ab29cf9d40f9565899edd7288de",
+    "title": "The CHATBOT Act Forces One Parenting Model On Every Family",
+    "link": "https://www.eff.org/deeplinks/2026/07/chatbot-act-forces-one-parenting-model-every-family",
+    "summary": "Artificial intelligence is rapidly changing education, and the way people search for information. Parents, teenagers, teachers, and schools are struggling with tough questions about when AI should, and should not, be\u2026",
+    "source": "EFF",
+    "tags": [
+      "TikTok",
+      "Facebook",
+      "Instagram"
+    ],
+    "date": "2026-07-31T19:06:43+00:00",
+    "fetchedAt": "2026-08-01T09:00:02.887627+00:00"
+  },
+  {
     "id": "98137bb321b9a90ba78aaa307a49c002",
     "title": "TNR Watch: Cyberattacks as a Tactic of Digital Transnational Repression",
     "link": "https://freedomhouse.org/article/tnr-watch-cyberattacks-tactic-digital-transnational-repression",
@@ -113,44 +153,6 @@
       "Censorship"
     ],
     "date": "2026-07-16T08:00:00+00:00",
-    "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
-  },
-  {
-    "id": "24ed6487819631824bf2a81b1c60b891",
-    "title": "California Steps Back From Dangerous Expansion of its Age-Gating Law",
-    "link": "https://www.eff.org/deeplinks/2026/07/california-steps-back-dangerous-expansion-its-age-gating-law",
-    "summary": "The California legislature has stepped back from a plan that would have expanded its age-gating law, removing language that could have compounded serious threats to users\u2019 speech, privacy and security just to browse the\u2026",
-    "source": "EFF",
-    "tags": [
-      "Age Verification"
-    ],
-    "date": "2026-07-15T20:50:48+00:00",
-    "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
-  },
-  {
-    "id": "bc38c0550fd340990b5f064474da1bc5",
-    "title": "The House Passed The KIDS Act\u2014The Senate Should Reject It",
-    "link": "https://www.eff.org/deeplinks/2026/07/house-passed-kids-act-senate-should-reject-it",
-    "summary": "Last week, the House voted on the KIDS Act , a disjointed package of legislation that seeks to control Americans\u2019 web browsing and private messaging. The package combines a revised version of the Kids Online Safety Act\u2026",
-    "source": "EFF",
-    "tags": [
-      "Online Safety",
-      "Age Verification",
-      "Child Safety"
-    ],
-    "date": "2026-07-09T20:58:33+00:00",
-    "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
-  },
-  {
-    "id": "d01cfe85d47bf3ed31aaba9c9ceaa5b6",
-    "title": "Help EFF Cut the AI Hype",
-    "link": "https://www.eff.org/deeplinks/2026/07/help-eff-cut-ai-hype",
-    "summary": "In the global race to build and dominate the AI industry, it can sure seem like the interests of ordinary people sit last on the agenda. It's just the opposite for EFF. While companies furiously jam AI tools into their\u2026",
-    "source": "EFF",
-    "tags": [
-      "Age Verification"
-    ],
-    "date": "2026-07-07T16:17:38+00:00",
     "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
   }
 ]
