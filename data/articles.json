@@ -1,5 +1,31 @@
 [
   {
+    "id": "22ed0b5ce4ad2daa5d0e354022376830",
+    "title": "The Senate Should Reject KOSA's Privacy Risks",
+    "link": "https://www.eff.org/deeplinks/2026/08/senate-should-reject-kosas-privacy-risks",
+    "summary": "The Senate Commerce Committee is once again considering legislation that would dramatically expand age verification, and undermine privacy for everyone. Alongside the SCREEN Act , the CHATBOT Act , and the Youth AI\u2026",
+    "source": "EFF",
+    "tags": [
+      "Online Safety",
+      "Censorship",
+      "Age Verification"
+    ],
+    "date": "2026-08-03T23:47:38+00:00",
+    "fetchedAt": "2026-08-04T09:33:30.239653+00:00"
+  },
+  {
+    "id": "3242141e5e1bde563e2945250232b735",
+    "title": "EFF at BSidesLV, Black Hat, and DEF CON \ud83d\udc68\u200d\ud83d\udcbb",
+    "link": "https://www.eff.org/deeplinks/2026/07/eff-bsideslv-black-hat-and-def-con",
+    "summary": "It's time. Time for tinkerers, security researchers, hackers, and fellow nerds to gather together in signature black hoodies and utilikilts to beat the heat in Las Vegas for the summer security conferences: BSidesLV \u2026",
+    "source": "EFF",
+    "tags": [
+      "Age Verification"
+    ],
+    "date": "2026-08-03T14:45:00+00:00",
+    "fetchedAt": "2026-08-04T09:33:30.239653+00:00"
+  },
+  {
     "id": "d05320b6cc7298fa4ce41151db0a8c33",
     "title": "Amending AB 1709 Doesn\u2019t Fix It: California\u2019s Social Media Ban Still Threatens Free Speech and Privacy",
     "link": "https://www.eff.org/deeplinks/2026/07/amending-ab-1709-doesnt-fix-it-californias-social-media-ban-still-threatens-free",
@@ -129,30 +155,6 @@
       "VPN"
     ],
     "date": "2026-07-20T16:22:25+00:00",
-    "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
-  },
-  {
-    "id": "89b1eb8587b1c9ea4aa56d52b90a0b7c",
-    "title": "EFF and ARTICLE 19 Submission to the European Commission on the DSA Trusted Flagger Guidelines",
-    "link": "https://www.eff.org/deeplinks/2026/07/eff-and-article-19-submission-european-commission-dsa-trusted-flagger-guidelines",
-    "summary": "EFF and ARTICLE 19 have submitted joint comments to the European Commission on draft guidelines for the Digital Services Act\u2019s trusted flagger mechanism. Having long advocated for a DSA that protects freedom of\u2026",
-    "source": "EFF",
-    "tags": [
-      "DSA"
-    ],
-    "date": "2026-07-16T09:22:17+00:00",
-    "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
-  },
-  {
-    "id": "7783812660f1ac8467a3af38b54b3c7d",
-    "title": "The game is up: how MENA\u2019s social media regulations silence and control",
-    "link": "https://www.accessnow.org/mena-social-media-censorship/?pk_campaign=feed&pk_kwd=mena-social-media-censorship",
-    "summary": "MENA's social media regulations give the appearance of legitimacy but threaten to increase state censorship and control. The post The game is up: how MENA\u2019s social media regulations silence and control appeared first on\u2026",
-    "source": "Access Now",
-    "tags": [
-      "Censorship"
-    ],
-    "date": "2026-07-16T08:00:00+00:00",
     "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
   }
 ]
