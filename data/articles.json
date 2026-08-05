@@ -1,5 +1,29 @@
 [
   {
+    "id": "62fb5540e802eb0bee5e73d78e722690",
+    "title": "#KeepItOn: authorities in Zambia must resist hitting the kill switch during upcoming elections",
+    "link": "https://www.accessnow.org/press-release/keepiton-zambia-must-resist-hitting-the-kill-switch-during-upcoming-elections/",
+    "summary": "Access Now and the #KeepItOn coalition \u2014 a global network of over 370 organizations from 106 countries working to end internet shutdowns, through an open letter, are urging Zambian authorities to ensure unfettered\u2026",
+    "source": "Access Now",
+    "tags": [
+      "Shutdown"
+    ],
+    "date": "2026-08-05T07:55:38+00:00",
+    "fetchedAt": "2026-08-05T09:29:55.069430+00:00"
+  },
+  {
+    "id": "ea5376649db07369cf686eaf7dac604b",
+    "title": "#KeepItOn: Government of Zambia must uphold human rights and ensure unrestricted internet access throughout the upcoming elections",
+    "link": "https://www.accessnow.org/press-release/keepiton-zambia-internet-access-upcoming-elections/",
+    "summary": "We, the undersigned organizations and members of the #KeepItOn coalition \u2014 a global network of over 370 organizations from 106 countries working to end internet shutdowns \u2014 appeal to you, President Hakainde Hichilema\u2026",
+    "source": "Access Now",
+    "tags": [
+      "Shutdown"
+    ],
+    "date": "2026-08-05T07:55:03+00:00",
+    "fetchedAt": "2026-08-05T09:29:55.069430+00:00"
+  },
+  {
     "id": "22ed0b5ce4ad2daa5d0e354022376830",
     "title": "The Senate Should Reject KOSA's Privacy Risks",
     "link": "https://www.eff.org/deeplinks/2026/08/senate-should-reject-kosas-privacy-risks",
@@ -130,31 +154,5 @@
     ],
     "date": "2026-07-22T08:34:12+00:00",
     "fetchedAt": "2026-07-23T19:31:54.206820+00:00"
-  },
-  {
-    "id": "94ccb4cd25940948011ad81df7f1bf34",
-    "title": "Ofcom unable to take further legal action against suicide forum",
-    "link": "https://www.bbc.co.uk/news/articles/c3d3ejgdm20o?at_medium=RSS&at_campaign=rss",
-    "summary": "The regulator said it had \"no further legal routes available\" under the Online Safety Act.",
-    "source": "BBC",
-    "tags": [
-      "Online Safety"
-    ],
-    "date": "2026-07-20T16:57:30+00:00",
-    "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
-  },
-  {
-    "id": "6291be08f9a33133aa5ec9763a3746dc",
-    "title": "Australia\u2019s Next Target In The War On Kids Online: Your VPN",
-    "link": "https://www.techdirt.com/2026/07/20/australias-next-target-in-the-war-on-kids-online-your-vpn/",
-    "summary": "We \u2014 and plenty of others \u2014 have been warning that the global rush to mandate age verification wouldn\u2019t stop at \u201clet\u2019s make sure kids can\u2019t see porn\u201d or even just \u201ckeep kids off of social media.\u201d It would inevitably\u2026",
-    "source": "Techdirt",
-    "tags": [
-      "Australia",
-      "Age Verification",
-      "VPN"
-    ],
-    "date": "2026-07-20T16:22:25+00:00",
-    "fetchedAt": "2026-07-21T18:06:24.610391+00:00"
   }
 ]
