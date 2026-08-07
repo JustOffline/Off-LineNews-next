@@ -1,5 +1,18 @@
 [
   {
+    "id": "5e89f384de621aadb817255e08a186f9",
+    "title": "The offline messaging apps challenging internet shutdowns",
+    "link": "https://restofworld.org/2026/india-github-geoblock-jack-dorsey-bitchat/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+    "summary": "Jack Dorsey\u2019s Bluetooth messaging app surged during India\u2019s internet blackout \u2014 and the government\u2019s response suggests a new tech battleground.",
+    "source": "Rest of World",
+    "tags": [
+      "Shutdown",
+      "India"
+    ],
+    "date": "2026-08-06T10:00:00+00:00",
+    "fetchedAt": "2026-08-07T08:06:14.933444+00:00"
+  },
+  {
     "id": "62fb5540e802eb0bee5e73d78e722690",
     "title": "#KeepItOn: authorities in Zambia must resist hitting the kill switch during upcoming elections",
     "link": "https://www.accessnow.org/press-release/keepiton-zambia-must-resist-hitting-the-kill-switch-during-upcoming-elections/",
@@ -139,20 +152,6 @@
       "TikTok"
     ],
     "date": "2026-07-23T18:19:03+00:00",
-    "fetchedAt": "2026-07-23T19:31:54.206820+00:00"
-  },
-  {
-    "id": "2b6b48e2327069b649b9c6a48e9b5753",
-    "title": "New EU Court of Justice Ruling on Platform Liability Could Cause Collateral Damage to Freedom of Expression",
-    "link": "https://www.eff.org/deeplinks/2026/07/new-eu-court-justice-ruling-platform-liability-could-cause-collateral-damage",
-    "summary": "Intermediary liability laws around the world recognize that social media platforms, search engines, and other online service providers have become an integral part of our lives: they shape how we access information\u2026",
-    "source": "EFF",
-    "tags": [
-      "Facebook",
-      "YouTube",
-      "DSA"
-    ],
-    "date": "2026-07-22T08:34:12+00:00",
     "fetchedAt": "2026-07-23T19:31:54.206820+00:00"
   }
 ]
