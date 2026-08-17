@@ -1,5 +1,18 @@
 [
   {
+    "id": "56f0446bfd2a24214c326d9fcce00eda",
+    "title": "Report supporting Australia\u2019s teen social media ban appears to contain AI hallucinations, Senate hears",
+    "link": "https://www.theguardian.com/australia-news/2026/aug/17/australia-social-media-ban-report-ai-hallucinations-ntwnfb",
+    "summary": "Exclusive: Guardian analysis finds one section of report includes links to academic articles that do not exist, but authors deny the references were made up by AI Follow our Australia news live blog for latest updates\u2026",
+    "source": "Guardian",
+    "tags": [
+      "Australia",
+      "Age Restriction"
+    ],
+    "date": "2026-08-17T02:58:05+00:00",
+    "fetchedAt": "2026-08-17T07:42:50.690952+00:00"
+  },
+  {
     "id": "7cdff95426a9d3e76b83a872e19156c3",
     "title": "#KeepItOn: celebrating a decade of fighting internet shutdowns",
     "link": "https://www.accessnow.org/keepiton-10-years-fighting-internet-shutdowns/?pk_campaign=feed&pk_kwd=keepiton-10-years-fighting-internet-shutdowns",
@@ -141,17 +154,5 @@
     ],
     "date": "2026-07-29T13:47:46+00:00",
     "fetchedAt": "2026-07-30T09:24:40.515428+00:00"
-  },
-  {
-    "id": "a417a06e99563a47b7bb2366ad61127f",
-    "title": "\u2018Collapsed\u2019: Roadblocks, internet blackout leave Pakistani Kashmir in limbo",
-    "link": "https://www.aljazeera.com/features/2026/7/24/collapsed-roadblocks-internet-blackout-leave-pakistani-kashmir-in-limbo?traffic_source=rss",
-    "summary": "Residents describe mounting hardship, as internet restrictions and road closures stretch into second month before polls.",
-    "source": "Al Jazeera",
-    "tags": [
-      "Shutdown"
-    ],
-    "date": "2026-07-24T06:01:39+00:00",
-    "fetchedAt": "2026-07-24T09:14:55.987051+00:00"
   }
 ]
