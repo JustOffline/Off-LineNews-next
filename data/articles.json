@@ -1,5 +1,19 @@
 [
   {
+    "id": "bcb8040bf0d22a829c1b0a85f3b8ce67",
+    "title": "Reel-ing it in: Meta is paying influencers to promote teen accounts",
+    "link": "https://www.theguardian.com/technology/2026/aug/18/meta-pays-influencers-teen-social-media-ban",
+    "summary": "Tech Transparency Project\u2019s report shows whenever governments mull platform regulations, company recruits influencers to promote its safety features In July 2025, Meta gathered parenting influencers from all over\u2026",
+    "source": "Guardian",
+    "tags": [
+      "Meta",
+      "Instagram",
+      "Australia"
+    ],
+    "date": "2026-08-18T13:00:47+00:00",
+    "fetchedAt": "2026-08-19T07:29:42.275210+00:00"
+  },
+  {
     "id": "56f0446bfd2a24214c326d9fcce00eda",
     "title": "Report supporting Australia\u2019s teen social media ban appears to contain AI hallucinations, Senate hears",
     "link": "https://www.theguardian.com/australia-news/2026/aug/17/australia-social-media-ban-report-ai-hallucinations-ntwnfb",
@@ -139,20 +153,6 @@
       "Instagram"
     ],
     "date": "2026-07-30T04:01:30+00:00",
-    "fetchedAt": "2026-07-30T09:24:40.515428+00:00"
-  },
-  {
-    "id": "8f21ce45cc2f356bf2887b4e1044a179",
-    "title": "X Says Australia\u2019s Under-16 Social Media Ban Risks Interfering With Foreign Law",
-    "link": "https://www.wired.com/story/x-says-australias-under-16s-social-media-bans-risk-interfering-with-foreign-law/",
-    "summary": "Elon Musk\u2019s platform attacked the country\u2019s \u201cinvasive\u201d information-gathering powers as it demands the government drop efforts to strengthen its no-children policy.",
-    "source": "Wired",
-    "tags": [
-      "Australia",
-      "Age Restriction",
-      "Child Safety"
-    ],
-    "date": "2026-07-29T13:47:46+00:00",
     "fetchedAt": "2026-07-30T09:24:40.515428+00:00"
   }
 ]
