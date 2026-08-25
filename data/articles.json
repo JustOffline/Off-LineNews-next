@@ -1,5 +1,17 @@
 [
   {
+    "id": "da9e8a864b0cc04114a3f8531db28234",
+    "title": "Even Some Of The Loudest Kids\u2019 Online Safety Advocates Are Now Warning Against Social Media Bans",
+    "link": "https://www.techdirt.com/2026/08/24/even-some-of-the-loudest-kids-online-safety-advocates-are-now-warning-against-social-media-bans/",
+    "summary": "We\u2019ve been talking for a while now about how the rush (much of it driven by politicians\u2019 obsession with Jonathan Haidt\u2019s mostly debunked book) to ban kids from social media is dangerously stupid. It misdiagnoses the\u2026",
+    "source": "Techdirt",
+    "tags": [
+      "Online Safety"
+    ],
+    "date": "2026-08-24T18:12:42+00:00",
+    "fetchedAt": "2026-08-25T07:35:30.912651+00:00"
+  },
+  {
     "id": "2d07da665a72225625a0f389294f89c3",
     "title": "Zero Knowledge Proofs Aren\u2019t Age Verification Silver Bullets",
     "link": "https://www.techdirt.com/2026/08/21/zero-knowledge-proofs-arent-age-verification-silver-bullets/",
@@ -140,18 +152,6 @@
       "Age Verification"
     ],
     "date": "2026-08-03T23:47:38+00:00",
-    "fetchedAt": "2026-08-04T09:33:30.239653+00:00"
-  },
-  {
-    "id": "3242141e5e1bde563e2945250232b735",
-    "title": "EFF at BSidesLV, Black Hat, and DEF CON \ud83d\udc68\u200d\ud83d\udcbb",
-    "link": "https://www.eff.org/deeplinks/2026/07/eff-bsideslv-black-hat-and-def-con",
-    "summary": "It's time. Time for tinkerers, security researchers, hackers, and fellow nerds to gather together in signature black hoodies and utilikilts to beat the heat in Las Vegas for the summer security conferences: BSidesLV \u2026",
-    "source": "EFF",
-    "tags": [
-      "Age Verification"
-    ],
-    "date": "2026-08-03T14:45:00+00:00",
     "fetchedAt": "2026-08-04T09:33:30.239653+00:00"
   }
 ]
