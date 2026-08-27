@@ -1,5 +1,19 @@
 [
   {
+    "id": "8e25a4c2c7fc934ac4387c07fbaa4375",
+    "title": "French Top Court Gets It Right, Strikes Down Social Media Ban For Youths",
+    "link": "https://www.eff.org/deeplinks/2026/08/french-top-court-gets-it-right-strikes-down-social-media-ban-youths",
+    "summary": "Earlier this month, France\u2019s top court struck down the country\u2019s legislation that banned social media use for people under 15 years old, which had been scheduled to take effect in January 2027. This is a welcome win for\u2026",
+    "source": "EFF",
+    "tags": [
+      "Australia",
+      "Age Verification",
+      "Age Restriction"
+    ],
+    "date": "2026-08-26T14:32:59+00:00",
+    "fetchedAt": "2026-08-27T17:58:09.923516+00:00"
+  },
+  {
     "id": "da9e8a864b0cc04114a3f8531db28234",
     "title": "Even Some Of The Loudest Kids\u2019 Online Safety Advocates Are Now Warning Against Social Media Bans",
     "link": "https://www.techdirt.com/2026/08/24/even-some-of-the-loudest-kids-online-safety-advocates-are-now-warning-against-social-media-bans/",
@@ -139,19 +153,5 @@
     ],
     "date": "2026-08-05T07:55:03+00:00",
     "fetchedAt": "2026-08-05T09:29:55.069430+00:00"
-  },
-  {
-    "id": "22ed0b5ce4ad2daa5d0e354022376830",
-    "title": "The Senate Should Reject KOSA's Privacy Risks",
-    "link": "https://www.eff.org/deeplinks/2026/08/senate-should-reject-kosas-privacy-risks",
-    "summary": "The Senate Commerce Committee is once again considering legislation that would dramatically expand age verification, and undermine privacy for everyone. Alongside the SCREEN Act , the CHATBOT Act , and the Youth AI\u2026",
-    "source": "EFF",
-    "tags": [
-      "Online Safety",
-      "Censorship",
-      "Age Verification"
-    ],
-    "date": "2026-08-03T23:47:38+00:00",
-    "fetchedAt": "2026-08-04T09:33:30.239653+00:00"
   }
 ]
