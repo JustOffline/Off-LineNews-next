@@ -1,5 +1,18 @@
 [
   {
+    "id": "4a75cf7a16f53ab977a51ed1ad412eeb",
+    "title": "EFF to Governor Newsom: Veto California\u2019s AB 1709",
+    "link": "https://www.eff.org/deeplinks/2026/08/eff-gov-newsom-veto-californias-ab-1709",
+    "summary": "The California legislature passed Assembly Bill 1709 (A.B. 1709) today, which functions as a sweeping ban on social media use for young people under the age of 16. This well-intentioned, but deeply flawed piece of\u2026",
+    "source": "EFF",
+    "tags": [
+      "DSA",
+      "Child Safety"
+    ],
+    "date": "2026-08-31T23:37:39+00:00",
+    "fetchedAt": "2026-09-01T12:13:22.875796+00:00"
+  },
+  {
     "id": "8e25a4c2c7fc934ac4387c07fbaa4375",
     "title": "French Top Court Gets It Right, Strikes Down Social Media Ban For Youths",
     "link": "https://www.eff.org/deeplinks/2026/08/french-top-court-gets-it-right-strikes-down-social-media-ban-youths",
@@ -140,18 +153,6 @@
       "Shutdown"
     ],
     "date": "2026-08-05T07:55:38+00:00",
-    "fetchedAt": "2026-08-05T09:29:55.069430+00:00"
-  },
-  {
-    "id": "ea5376649db07369cf686eaf7dac604b",
-    "title": "#KeepItOn: Government of Zambia must uphold human rights and ensure unrestricted internet access throughout the upcoming elections",
-    "link": "https://www.accessnow.org/press-release/keepiton-zambia-internet-access-upcoming-elections/",
-    "summary": "We, the undersigned organizations and members of the #KeepItOn coalition \u2014 a global network of over 370 organizations from 106 countries working to end internet shutdowns \u2014 appeal to you, President Hakainde Hichilema\u2026",
-    "source": "Access Now",
-    "tags": [
-      "Shutdown"
-    ],
-    "date": "2026-08-05T07:55:03+00:00",
     "fetchedAt": "2026-08-05T09:29:55.069430+00:00"
   }
 ]
