@@ -1,5 +1,19 @@
 [
   {
+    "id": "6519d9785c9c92e058ef936ed60feda7",
+    "title": "Meta's $17 Billion Settlement is a Bad Deal for Teens and All Social Media Users",
+    "link": "https://www.eff.org/deeplinks/2026/09/metas-17-billion-settlement-bad-deal-teens-and-all-social-media-users",
+    "summary": "Meta\u2019s settlement with 52 state attorneys general is a bad deal for all internet users, and especially for teens. That\u2019s what we said the day the settlement was announced. In this post, we go through the Settlement\u2019s\u2026",
+    "source": "EFF",
+    "tags": [
+      "TikTok",
+      "Facebook",
+      "Meta"
+    ],
+    "date": "2026-09-01T20:51:07+00:00",
+    "fetchedAt": "2026-09-02T11:51:10.185216+00:00"
+  },
+  {
     "id": "4a75cf7a16f53ab977a51ed1ad412eeb",
     "title": "EFF to Governor Newsom: Veto California\u2019s AB 1709",
     "link": "https://www.eff.org/deeplinks/2026/08/eff-gov-newsom-veto-californias-ab-1709",
@@ -142,17 +156,5 @@
     ],
     "date": "2026-08-06T10:00:00+00:00",
     "fetchedAt": "2026-08-07T08:06:14.933444+00:00"
-  },
-  {
-    "id": "62fb5540e802eb0bee5e73d78e722690",
-    "title": "#KeepItOn: authorities in Zambia must resist hitting the kill switch during upcoming elections",
-    "link": "https://www.accessnow.org/press-release/keepiton-zambia-must-resist-hitting-the-kill-switch-during-upcoming-elections/",
-    "summary": "Access Now and the #KeepItOn coalition \u2014 a global network of over 370 organizations from 106 countries working to end internet shutdowns, through an open letter, are urging Zambian authorities to ensure unfettered\u2026",
-    "source": "Access Now",
-    "tags": [
-      "Shutdown"
-    ],
-    "date": "2026-08-05T07:55:38+00:00",
-    "fetchedAt": "2026-08-05T09:29:55.069430+00:00"
   }
 ]
