@@ -1,5 +1,18 @@
 [
   {
+    "id": "8a03b433bcc788a7d1203304b72b0adc",
+    "title": "UK to force Apple and Google to block explicit images on children\u2019s smartphones",
+    "link": "https://www.theguardian.com/technology/2026/sep/08/uk-apple-google-explicit-images-children-smartphones-lisa-nandy-legislation",
+    "summary": "Lisa Nandy says government will introduce legislation after talks end without breakthrough Apple and Google will be forced to block explicit images on children\u2019s smartphones by law in the UK after talks failed to\u2026",
+    "source": "Guardian",
+    "tags": [
+      "Age Restriction",
+      "Child Safety"
+    ],
+    "date": "2026-09-08T18:25:01+00:00",
+    "fetchedAt": "2026-09-09T12:02:22.206121+00:00"
+  },
+  {
     "id": "6519d9785c9c92e058ef936ed60feda7",
     "title": "Meta's $17 Billion Settlement is a Bad Deal for Teens and All Social Media Users",
     "link": "https://www.eff.org/deeplinks/2026/09/metas-17-billion-settlement-bad-deal-teens-and-all-social-media-users",
@@ -143,18 +156,5 @@
     ],
     "date": "2026-08-11T08:00:00+00:00",
     "fetchedAt": "2026-08-11T08:02:45.781891+00:00"
-  },
-  {
-    "id": "5e89f384de621aadb817255e08a186f9",
-    "title": "The offline messaging apps challenging internet shutdowns",
-    "link": "https://restofworld.org/2026/india-github-geoblock-jack-dorsey-bitchat/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
-    "summary": "Jack Dorsey\u2019s Bluetooth messaging app surged during India\u2019s internet blackout \u2014 and the government\u2019s response suggests a new tech battleground.",
-    "source": "Rest of World",
-    "tags": [
-      "Shutdown",
-      "India"
-    ],
-    "date": "2026-08-06T10:00:00+00:00",
-    "fetchedAt": "2026-08-07T08:06:14.933444+00:00"
   }
 ]
