@@ -1,5 +1,18 @@
 [
   {
+    "id": "2ab3a358779790954137482f9e0a4889",
+    "title": "We All Deserve a Better Internet, Not A Smaller One",
+    "link": "https://www.eff.org/press/releases/we-all-deserve-better-internet-not-smaller-one",
+    "summary": "Bans Like California\u2019s Don\u2019t Fix What\u2019s Wrong With Social Media Companies SAN FRANCISCO - Technology and the laws that regulate it should support and empower young people. California\u2019s AB 1709 - signed into law today by\u2026",
+    "source": "EFF",
+    "tags": [
+      "Age Verification",
+      "Child Safety"
+    ],
+    "date": "2026-09-10T19:12:08+00:00",
+    "fetchedAt": "2026-09-11T11:56:02.968828+00:00"
+  },
+  {
     "id": "e236c39df2199af7e6c8e4ed561cb143",
     "title": "Digital Sovereignty: What It Is, What It Could Be",
     "link": "https://www.eff.org/deeplinks/2026/09/digital-sovereignty-what-it-what-it-could-be",
@@ -145,18 +158,5 @@
     ],
     "date": "2026-08-18T13:00:47+00:00",
     "fetchedAt": "2026-08-19T07:29:42.275210+00:00"
-  },
-  {
-    "id": "56f0446bfd2a24214c326d9fcce00eda",
-    "title": "Report supporting Australia\u2019s teen social media ban appears to contain AI hallucinations, Senate hears",
-    "link": "https://www.theguardian.com/australia-news/2026/aug/17/australia-social-media-ban-report-ai-hallucinations-ntwnfb",
-    "summary": "Exclusive: Guardian analysis finds one section of report includes links to academic articles that do not exist, but authors deny the references were made up by AI Follow our Australia news live blog for latest updates\u2026",
-    "source": "Guardian",
-    "tags": [
-      "Australia",
-      "Age Restriction"
-    ],
-    "date": "2026-08-17T02:58:05+00:00",
-    "fetchedAt": "2026-08-17T07:42:50.690952+00:00"
   }
 ]
