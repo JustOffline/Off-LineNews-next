@@ -1,5 +1,19 @@
 [
   {
+    "id": "8a7917c3b1d7451009720658433173e6",
+    "title": "Governor Newsom Signs Student-Backed Digital Literacy Bills Alongside Misguided Bans",
+    "link": "https://www.eff.org/deeplinks/2026/09/governor-newsom-signs-student-backed-digital-literacy-bills-alongside-misguided",
+    "summary": "Governor Newsom signed a package of 12 bills yesterday aimed at \u201cprotecting children\u201d online. One of them was AB 1709 , which EFF has opposed this legislative session and serves as a functional ban on young people under\u2026",
+    "source": "EFF",
+    "tags": [
+      "Online Safety",
+      "Australia",
+      "Censorship"
+    ],
+    "date": "2026-09-11T20:25:57+00:00",
+    "fetchedAt": "2026-09-12T11:22:41.377248+00:00"
+  },
+  {
     "id": "2ab3a358779790954137482f9e0a4889",
     "title": "We All Deserve a Better Internet, Not A Smaller One",
     "link": "https://www.eff.org/press/releases/we-all-deserve-better-internet-not-smaller-one",
@@ -144,19 +158,5 @@
     ],
     "date": "2026-08-18T22:39:03+00:00",
     "fetchedAt": "2026-08-20T07:32:50.811445+00:00"
-  },
-  {
-    "id": "bcb8040bf0d22a829c1b0a85f3b8ce67",
-    "title": "Reel-ing it in: Meta is paying influencers to promote teen accounts",
-    "link": "https://www.theguardian.com/technology/2026/aug/18/meta-pays-influencers-teen-social-media-ban",
-    "summary": "Tech Transparency Project\u2019s report shows whenever governments mull platform regulations, company recruits influencers to promote its safety features In July 2025, Meta gathered parenting influencers from all over\u2026",
-    "source": "Guardian",
-    "tags": [
-      "Meta",
-      "Instagram",
-      "Australia"
-    ],
-    "date": "2026-08-18T13:00:47+00:00",
-    "fetchedAt": "2026-08-19T07:29:42.275210+00:00"
   }
 ]
