@@ -12,6 +12,18 @@
     "fetchedAt": "2026-09-21T13:27:54.337180+00:00"
   },
   {
+    "id": "acd3b6efff0f24db277de0e29cdd3c6c",
+    "title": "Discord\u2019s age verification era is upon us, despite community backlash",
+    "link": "https://techcrunch.com/2026/09/22/discords-age-verification-era-is-upon-us-despite-community-backlash/",
+    "summary": "According to Discord, 90% of users will not have to verify their age.",
+    "source": "TechCrunch",
+    "tags": [
+      "Age Verification"
+    ],
+    "date": "2026-09-23T03:31:12+00:00",
+    "fetchedAt": "2026-09-23T12:25:39.732218+00:00"
+  },
+  {
     "id": "7a9118437d39e79bead039fe9da14fd5",
     "title": "EU Kids Act Won't Keep the Internet Accountable and Trustworthy",
     "link": "https://www.eff.org/deeplinks/2026/09/eu-kids-act-wont-keep-internet-accountable-and-trustworthy",
@@ -142,18 +154,5 @@
     ],
     "date": "2026-09-01T20:51:07+00:00",
     "fetchedAt": "2026-09-02T11:51:10.185216+00:00"
-  },
-  {
-    "id": "4a75cf7a16f53ab977a51ed1ad412eeb",
-    "title": "EFF to Governor Newsom: Veto California\u2019s AB 1709",
-    "link": "https://www.eff.org/deeplinks/2026/08/eff-gov-newsom-veto-californias-ab-1709",
-    "summary": "The California legislature passed Assembly Bill 1709 (A.B. 1709) today, which functions as a sweeping ban on social media use for young people under the age of 16. This well-intentioned, but deeply flawed piece of\u2026",
-    "source": "EFF",
-    "tags": [
-      "DSA",
-      "Child Safety"
-    ],
-    "date": "2026-08-31T23:37:39+00:00",
-    "fetchedAt": "2026-09-01T12:13:22.875796+00:00"
   }
 ]
