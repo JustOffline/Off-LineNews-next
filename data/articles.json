@@ -24,6 +24,18 @@
     "fetchedAt": "2026-09-23T12:25:39.732218+00:00"
   },
   {
+    "id": "eac007b90c3f521c1e18d740838b890c",
+    "title": "REPORT LAUNCH: Freedom on the Net 2026",
+    "link": "https://freedomhouse.org/event/report-launch-freedom-net-2026",
+    "summary": "REPORT LAUNCH: Freedom on the Net 2026 Start Date Thu, 10/22/2026 - 11:00 End Date Thu, 10/22/2026 - 12:00 Register Join Freedom House for the launch of Freedom on the Net 2026: Seismic Shifts on the Global Internet \u2026",
+    "source": "Freedom House",
+    "tags": [
+      "News"
+    ],
+    "date": "2026-09-22T17:04:08+00:00",
+    "fetchedAt": "2026-09-24T12:24:53.942487+00:00"
+  },
+  {
     "id": "7a9118437d39e79bead039fe9da14fd5",
     "title": "EU Kids Act Won't Keep the Internet Accountable and Trustworthy",
     "link": "https://www.eff.org/deeplinks/2026/09/eu-kids-act-wont-keep-internet-accountable-and-trustworthy",
@@ -140,19 +152,5 @@
     ],
     "date": "2026-09-08T18:25:01+00:00",
     "fetchedAt": "2026-09-09T12:02:22.206121+00:00"
-  },
-  {
-    "id": "6519d9785c9c92e058ef936ed60feda7",
-    "title": "Meta's $17 Billion Settlement is a Bad Deal for Teens and All Social Media Users",
-    "link": "https://www.eff.org/deeplinks/2026/09/metas-17-billion-settlement-bad-deal-teens-and-all-social-media-users",
-    "summary": "Meta\u2019s settlement with 52 state attorneys general is a bad deal for all internet users, and especially for teens. That\u2019s what we said the day the settlement was announced. In this post, we go through the Settlement\u2019s\u2026",
-    "source": "EFF",
-    "tags": [
-      "TikTok",
-      "Facebook",
-      "Meta"
-    ],
-    "date": "2026-09-01T20:51:07+00:00",
-    "fetchedAt": "2026-09-02T11:51:10.185216+00:00"
   }
 ]
