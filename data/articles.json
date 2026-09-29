@@ -12,6 +12,18 @@
     "fetchedAt": "2026-09-21T13:27:54.337180+00:00"
   },
   {
+    "id": "6d6eaecf9dfe8f30ad2dd0523d91f93c",
+    "title": "The open-source AI platforms vying to become China\u2019s Hugging Face",
+    "link": "https://restofworld.org/2026/china-open-source-ai-hugging-face-modelscope-moark/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
+    "summary": "AI model platforms ModelScope and MoArk are competing to serve Chinese-speaking developers behind the Great Firewall.",
+    "source": "Rest of World",
+    "tags": [
+      "China"
+    ],
+    "date": "2026-09-29T10:00:00+00:00",
+    "fetchedAt": "2026-09-29T13:32:16.310638+00:00"
+  },
+  {
     "id": "7cf66ff5b8e6db5ba2ab143913768a3b",
     "title": "The Trump Administration Is Trying to Get Musk and X Out of a $137 Million EU Fine",
     "link": "https://www.wired.com/story/trump-administration-is-trying-to-get-musk-and-x-out-of-a-dollar137-million-eu-fine/",
@@ -137,19 +149,5 @@
     ],
     "date": "2026-09-10T19:12:08+00:00",
     "fetchedAt": "2026-09-11T11:56:02.968828+00:00"
-  },
-  {
-    "id": "e236c39df2199af7e6c8e4ed561cb143",
-    "title": "Digital Sovereignty: What It Is, What It Could Be",
-    "link": "https://www.eff.org/deeplinks/2026/09/digital-sovereignty-what-it-what-it-could-be",
-    "summary": "The term \u201cdigital sovereignty\u201d has become ubiquitous. European officials invoke it in debates about cloud infrastructure, AI , semiconductors , and platform regulation. Governments throughout the global majority use it\u2026",
-    "source": "EFF",
-    "tags": [
-      "TikTok",
-      "Facebook",
-      "Russia"
-    ],
-    "date": "2026-09-09T18:04:27+00:00",
-    "fetchedAt": "2026-09-10T11:57:15.271531+00:00"
   }
 ]
