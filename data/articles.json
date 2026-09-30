@@ -12,6 +12,33 @@
     "fetchedAt": "2026-09-21T13:27:54.337180+00:00"
   },
   {
+    "id": "2b26e02ffcc0df5d3a1466341e45d274",
+    "title": "Nandy says children\u2019s social media ban only \u2018staging post\u2019 in online safety drive",
+    "link": "https://www.theguardian.com/technology/2026/sep/30/lisa-nandy-social-media-ban-online-safety-culture-secretary",
+    "summary": "Exclusive: Culture secretary says UK will crack down further and be \u2018pioneer of tech as a force for good\u2019 Lisa Nandy has warned technology firms that the government\u2019s online safety crackdown is not finished, saying that\u2026",
+    "source": "Guardian",
+    "tags": [
+      "Online Safety",
+      "Age Restriction",
+      "Child Safety"
+    ],
+    "date": "2026-09-30T05:00:12+00:00",
+    "fetchedAt": "2026-09-30T13:09:32.368409+00:00"
+  },
+  {
+    "id": "44cc76b2fbf9d477db3ad1f0e46117c1",
+    "title": "EU Kids Act Won\u2019t Keep The Internet Accountable And Trustworthy",
+    "link": "https://www.techdirt.com/2026/09/29/eu-kids-act-wont-keep-the-internet-accountable-and-trustworthy/",
+    "summary": "The EU Commission draft law to restrict young people\u2019s access to the internet that it presented last week will come at a high cost: it will put online services behind age gates, expand the use of intrusive age\u2026",
+    "source": "Techdirt",
+    "tags": [
+      "Age Verification",
+      "Child Safety"
+    ],
+    "date": "2026-09-29T20:08:31+00:00",
+    "fetchedAt": "2026-09-30T13:09:32.368409+00:00"
+  },
+  {
     "id": "6d6eaecf9dfe8f30ad2dd0523d91f93c",
     "title": "The open-source AI platforms vying to become China\u2019s Hugging Face",
     "link": "https://restofworld.org/2026/china-open-source-ai-hugging-face-modelscope-moark/?utm_source=rss&utm_medium=rss&utm_campaign=feeds",
@@ -122,32 +149,5 @@
     ],
     "date": "2026-09-15T04:00:26+00:00",
     "fetchedAt": "2026-09-15T12:20:49.903262+00:00"
-  },
-  {
-    "id": "8a7917c3b1d7451009720658433173e6",
-    "title": "Governor Newsom Signs Student-Backed Digital Literacy Bills Alongside Misguided Bans",
-    "link": "https://www.eff.org/deeplinks/2026/09/governor-newsom-signs-student-backed-digital-literacy-bills-alongside-misguided",
-    "summary": "Governor Newsom signed a package of 12 bills yesterday aimed at \u201cprotecting children\u201d online. One of them was AB 1709 , which EFF has opposed this legislative session and serves as a functional ban on young people under\u2026",
-    "source": "EFF",
-    "tags": [
-      "Online Safety",
-      "Australia",
-      "Censorship"
-    ],
-    "date": "2026-09-11T20:25:57+00:00",
-    "fetchedAt": "2026-09-12T11:22:41.377248+00:00"
-  },
-  {
-    "id": "2ab3a358779790954137482f9e0a4889",
-    "title": "We All Deserve a Better Internet, Not A Smaller One",
-    "link": "https://www.eff.org/press/releases/we-all-deserve-better-internet-not-smaller-one",
-    "summary": "Bans Like California\u2019s Don\u2019t Fix What\u2019s Wrong With Social Media Companies SAN FRANCISCO - Technology and the laws that regulate it should support and empower young people. California\u2019s AB 1709 - signed into law today by\u2026",
-    "source": "EFF",
-    "tags": [
-      "Age Verification",
-      "Child Safety"
-    ],
-    "date": "2026-09-10T19:12:08+00:00",
-    "fetchedAt": "2026-09-11T11:56:02.968828+00:00"
   }
 ]
