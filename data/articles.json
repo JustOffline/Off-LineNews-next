@@ -12,6 +12,20 @@
     "fetchedAt": "2026-09-21T13:27:54.337180+00:00"
   },
   {
+    "id": "edf08afe5814e3a032adc09aaa83e9a7",
+    "title": "Anika Wells named on Time100 list as one of \u2018world\u2019s most influential rising stars\u2019 after social media ban",
+    "link": "https://www.theguardian.com/australia-news/2026/oct/01/anika-wells-time100-time-magazine-influential-rising-stars",
+    "summary": "Time magazine list includes Australian communications minister after her efforts to take on big tech Get our new political email , free app or daily news podcast The federal communications minister, Anika Wells, has\u2026",
+    "source": "Guardian",
+    "tags": [
+      "Australia",
+      "Age Restriction",
+      "Child Safety"
+    ],
+    "date": "2026-10-01T07:12:45+00:00",
+    "fetchedAt": "2026-10-01T14:01:08.383290+00:00"
+  },
+  {
     "id": "2b26e02ffcc0df5d3a1466341e45d274",
     "title": "Nandy says children\u2019s social media ban only \u2018staging post\u2019 in online safety drive",
     "link": "https://www.theguardian.com/technology/2026/sep/30/lisa-nandy-social-media-ban-online-safety-culture-secretary",
@@ -136,18 +150,6 @@
       "Shutdown"
     ],
     "date": "2026-09-15T05:47:52+00:00",
-    "fetchedAt": "2026-09-15T12:20:49.903262+00:00"
-  },
-  {
-    "id": "99a213e24007eacd1b15fc58c14ccd70",
-    "title": "Digital ID comes of age as pubs and bars get go-ahead for biometric scan tech",
-    "link": "https://www.theguardian.com/business/2026/sep/15/pubs-and-bars-get-go-ahead-digital-id-biometric-scan-tech",
-    "summary": "New laws coming into force this week aim to streamline age checks although old-style plastic IDs will still be allowed Younger drinkers in England and Wales will be able to prove their age with a digital ID starting\u2026",
-    "source": "Guardian",
-    "tags": [
-      "Age Verification"
-    ],
-    "date": "2026-09-15T04:00:26+00:00",
     "fetchedAt": "2026-09-15T12:20:49.903262+00:00"
   }
 ]
