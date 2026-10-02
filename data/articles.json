@@ -1,5 +1,19 @@
 [
   {
+    "id": "87e56e8f4e8dc4754581186bef81b3cf",
+    "title": "Court Agrees with EFF: Utah\u2019s VPN Law Demands a Technical Impossibility",
+    "link": "https://www.eff.org/deeplinks/2026/10/court-agrees-eff-utahs-vpn-law-demands-technical-impossibility",
+    "summary": "When state lawmakers attempt to rewrite how the internet works, users rely on courts to recognize that laws can\u2019t make technical impossibilities a reality. That\u2019s why we were happy to see that a court has blocked Utah\u2019s\u2026",
+    "source": "EFF",
+    "tags": [
+      "Censorship",
+      "Age Verification",
+      "VPN"
+    ],
+    "date": "2026-10-01T19:57:20+00:00",
+    "fetchedAt": "2026-10-02T13:20:21.245513+00:00"
+  },
+  {
     "id": "7f05f1c89bf1e21769525d30834b72d2",
     "title": "Access Now at CIPESA\u2019s 2026 FIFAfrica",
     "link": "https://www.accessnow.org/event/2026-fifafrica/",
@@ -139,17 +153,5 @@
     ],
     "date": "2026-09-16T15:00:23+00:00",
     "fetchedAt": "2026-09-17T12:18:07.725316+00:00"
-  },
-  {
-    "id": "be5a24e47caac6eb901efec850f34373",
-    "title": "Internet shutdown crosses 100 days in Pakistan-administered Kashmir",
-    "link": "https://www.aljazeera.com/news/2026/9/15/internet-shutdown-crosses-100-days-in-pakistan-administered-kashmir?traffic_source=rss",
-    "summary": "Mobile data, broadband services suspended in the territory since protests calling for electoral reform in June.",
-    "source": "Al Jazeera",
-    "tags": [
-      "Shutdown"
-    ],
-    "date": "2026-09-15T05:47:52+00:00",
-    "fetchedAt": "2026-09-15T12:20:49.903262+00:00"
   }
 ]
