@@ -1,5 +1,32 @@
 [
   {
+    "id": "ce42ba44f97c25e7cbb5e1f576e34b15",
+    "title": "Site-Blocking Will Not Defend IP, No Matter the Bill\u2019s Name",
+    "link": "https://www.eff.org/deeplinks/2026/10/site-blocking-will-not-defend-ip-no-matter-bills-name",
+    "summary": "There has been a raft of site-blocking bills in the latest Congress, and the latest is called the \u201cDeterring Extraterritorial Foreign Exploitation of Networks Damaging Intellectual Property\u201d aka the \u201c DEFEND IP Act .\u201d\u2026",
+    "source": "EFF",
+    "tags": [
+      "YouTube",
+      "Censorship",
+      "VPN"
+    ],
+    "date": "2026-10-02T18:59:23+00:00",
+    "fetchedAt": "2026-10-03T12:08:17.570086+00:00"
+  },
+  {
+    "id": "93679b7b085d0ca26d1eadd098c169fc",
+    "title": "Congress Has Another Site-Blocking Bill, And This One Targets VPNs",
+    "link": "https://www.eff.org/deeplinks/2026/10/congress-has-another-site-blocking-bill-and-one-targets-vpns",
+    "summary": "Congress is taking another run at site-blocking, a deeply flawed concept that would undermine basic internet infrastructure. Rep. Darrell Issa (R-CA) has introduced the American Copyright Protection Act (ACPA), H.R\u2026",
+    "source": "EFF",
+    "tags": [
+      "Censorship",
+      "VPN"
+    ],
+    "date": "2026-10-02T17:41:08+00:00",
+    "fetchedAt": "2026-10-03T12:08:17.570086+00:00"
+  },
+  {
     "id": "87e56e8f4e8dc4754581186bef81b3cf",
     "title": "Court Agrees with EFF: Utah\u2019s VPN Law Demands a Technical Impossibility",
     "link": "https://www.eff.org/deeplinks/2026/10/court-agrees-eff-utahs-vpn-law-demands-technical-impossibility",
@@ -127,31 +154,5 @@
     ],
     "date": "2026-09-21T12:27:52+00:00",
     "fetchedAt": "2026-09-21T13:27:54.337180+00:00"
-  },
-  {
-    "id": "8052a8a5bafab29ae6c614c806997e1a",
-    "title": "How the Meta Settlement Silences Youth Activism",
-    "link": "https://www.eff.org/deeplinks/2026/09/meta-settlement-yet-another-example-online-youth-organizing-under-threat",
-    "summary": "Since its integration into our digital world, social media has played a pivotal role in youth organizing and social mobilization. Yet, people\u2019s access to these platforms is increasingly coming under threat from courts\u2026",
-    "source": "EFF",
-    "tags": [
-      "TikTok",
-      "Facebook",
-      "Meta"
-    ],
-    "date": "2026-09-16T16:04:50+00:00",
-    "fetchedAt": "2026-09-17T12:18:07.725316+00:00"
-  },
-  {
-    "id": "d92be1b0af4a3d1813bb8cb99e2f4d75",
-    "title": "\u2018Godfather of AI\u2019 says tech regulation is nearing Covid-style pivot moment",
-    "link": "https://www.theguardian.com/technology/2026/sep/16/ai-tech-regulation-government-action-yoshua-bengio",
-    "summary": "Safety crisis makes it more likely that governments will be spurred into action, says Yoshua Bengio Concerns over AI safety are reaching a point where governments realise they must act to protect the public, similarly\u2026",
-    "source": "Guardian",
-    "tags": [
-      "News"
-    ],
-    "date": "2026-09-16T15:00:23+00:00",
-    "fetchedAt": "2026-09-17T12:18:07.725316+00:00"
   }
 ]
