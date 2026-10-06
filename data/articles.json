@@ -1,5 +1,19 @@
 [
   {
+    "id": "883a5af0137094793fb6c6fe0a76c55d",
+    "title": "Ofcom investigates Meta over Instagram Instants safety checks",
+    "link": "https://www.theguardian.com/technology/2026/oct/06/ofcom-investigates-meta-instagram-instants-safety-checks",
+    "summary": "Watchdog examining whether company carried out adequate risk assessment as required by Online Safety Act Mark Zuckerberg\u2019s Meta is under investigation for a potential breach of the UK\u2019s digital safety laws after\u2026",
+    "source": "Guardian",
+    "tags": [
+      "Meta",
+      "Instagram",
+      "Online Safety"
+    ],
+    "date": "2026-10-06T13:22:43+00:00",
+    "fetchedAt": "2026-10-06T13:45:48.821358+00:00"
+  },
+  {
     "id": "ce42ba44f97c25e7cbb5e1f576e34b15",
     "title": "Site-Blocking Will Not Defend IP, No Matter the Bill\u2019s Name",
     "link": "https://www.eff.org/deeplinks/2026/10/site-blocking-will-not-defend-ip-no-matter-bills-name",
@@ -140,19 +154,5 @@
     ],
     "date": "2026-09-22T17:04:08+00:00",
     "fetchedAt": "2026-09-24T12:24:53.942487+00:00"
-  },
-  {
-    "id": "7a9118437d39e79bead039fe9da14fd5",
-    "title": "EU Kids Act Won't Keep the Internet Accountable and Trustworthy",
-    "link": "https://www.eff.org/deeplinks/2026/09/eu-kids-act-wont-keep-internet-accountable-and-trustworthy",
-    "summary": "The EU Commission draft law to restrict young people\u2019s access to the internet that it presented last week will come at a high cost: it will put online services behind age gates, expand the use of intrusive age\u2026",
-    "source": "EFF",
-    "tags": [
-      "DSA",
-      "Age Verification",
-      "Child Safety"
-    ],
-    "date": "2026-09-21T12:27:52+00:00",
-    "fetchedAt": "2026-09-21T13:27:54.337180+00:00"
   }
 ]
