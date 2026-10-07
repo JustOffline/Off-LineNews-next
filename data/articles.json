@@ -1,5 +1,19 @@
 [
   {
+    "id": "752f84754cc415e6e78156953261322b",
+    "title": "Pornhub returns to Australia after banning access due to age verification rules",
+    "link": "https://www.theguardian.com/australia-news/2026/oct/07/pornhub-returns-australia-apple-age-verification-rules-child-safety-ntwnfb",
+    "summary": "Australian adults again able to access the world\u2019s most popular porn site after parent company introduces age checking via Apple devices Get our breaking news email , free app or daily news podcast Australian adults\u2026",
+    "source": "Guardian",
+    "tags": [
+      "Online Safety",
+      "Australia",
+      "Age Verification"
+    ],
+    "date": "2026-10-07T00:28:14+00:00",
+    "fetchedAt": "2026-10-07T14:03:03.176855+00:00"
+  },
+  {
     "id": "883a5af0137094793fb6c6fe0a76c55d",
     "title": "Ofcom investigates Meta over Instagram Instants safety checks",
     "link": "https://www.theguardian.com/technology/2026/oct/06/ofcom-investigates-meta-instagram-instants-safety-checks",
@@ -12,6 +26,18 @@
     ],
     "date": "2026-10-06T13:22:43+00:00",
     "fetchedAt": "2026-10-06T13:45:48.821358+00:00"
+  },
+  {
+    "id": "131b09c22c56b03a48355f7d8012284f",
+    "title": "OONI at FIFAfrica 2026",
+    "link": "https://ooni.org/post/2026-ooni-fifafrica/",
+    "summary": "Image: OONI attending FIFAfrica 2026 . Last week, we had the opportunity to participate in the Forum on Internet Freedom in Africa (FIFAfrica) 2026 , one of Africa\u2019s largest and most important digital rights\u2026",
+    "source": "OONI",
+    "tags": [
+      "News"
+    ],
+    "date": "2026-10-06T00:00:00+00:00",
+    "fetchedAt": "2026-10-07T14:03:03.176855+00:00"
   },
   {
     "id": "ce42ba44f97c25e7cbb5e1f576e34b15",
@@ -130,29 +156,5 @@
     ],
     "date": "2026-09-25T11:32:17+00:00",
     "fetchedAt": "2026-09-25T12:25:03.610499+00:00"
-  },
-  {
-    "id": "acd3b6efff0f24db277de0e29cdd3c6c",
-    "title": "Discord\u2019s age verification era is upon us, despite community backlash",
-    "link": "https://techcrunch.com/2026/09/22/discords-age-verification-era-is-upon-us-despite-community-backlash/",
-    "summary": "According to Discord, 90% of users will not have to verify their age.",
-    "source": "TechCrunch",
-    "tags": [
-      "Age Verification"
-    ],
-    "date": "2026-09-23T03:31:12+00:00",
-    "fetchedAt": "2026-09-23T12:25:39.732218+00:00"
-  },
-  {
-    "id": "eac007b90c3f521c1e18d740838b890c",
-    "title": "REPORT LAUNCH: Freedom on the Net 2026",
-    "link": "https://freedomhouse.org/event/report-launch-freedom-net-2026",
-    "summary": "REPORT LAUNCH: Freedom on the Net 2026 Start Date Thu, 10/22/2026 - 11:00 End Date Thu, 10/22/2026 - 12:00 Register Join Freedom House for the launch of Freedom on the Net 2026: Seismic Shifts on the Global Internet \u2026",
-    "source": "Freedom House",
-    "tags": [
-      "News"
-    ],
-    "date": "2026-09-22T17:04:08+00:00",
-    "fetchedAt": "2026-09-24T12:24:53.942487+00:00"
   }
 ]
