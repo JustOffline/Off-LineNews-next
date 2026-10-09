@@ -1,5 +1,19 @@
 [
   {
+    "id": "5652a075884ad64b7c58a87ddfae3940",
+    "title": "When No ID Means No Internet: Age Verification and the Right to Access Information",
+    "link": "https://www.eff.org/deeplinks/2026/10/when-no-id-means-no-internet-age-verification-and-right-access-information",
+    "summary": "This post was co-authored by Sheila B. Lalwani , a doctorate student and recent COMPASS Fellow hosted by EFF. Age verification proposals are often presented as a simple tradeoff: sacrifice a little privacy to better\u2026",
+    "source": "EFF",
+    "tags": [
+      "DSA",
+      "Online Safety",
+      "India"
+    ],
+    "date": "2026-10-08T19:59:49+00:00",
+    "fetchedAt": "2026-10-09T13:59:04.079021+00:00"
+  },
+  {
     "id": "752f84754cc415e6e78156953261322b",
     "title": "Pornhub returns to Australia after banning access due to age verification rules",
     "link": "https://www.theguardian.com/australia-news/2026/oct/07/pornhub-returns-australia-apple-age-verification-rules-child-safety-ntwnfb",
@@ -144,17 +158,5 @@
     ],
     "date": "2026-09-29T10:00:00+00:00",
     "fetchedAt": "2026-09-29T13:32:16.310638+00:00"
-  },
-  {
-    "id": "7cf66ff5b8e6db5ba2ab143913768a3b",
-    "title": "The Trump Administration Is Trying to Get Musk and X Out of a $137 Million EU Fine",
-    "link": "https://www.wired.com/story/trump-administration-is-trying-to-get-musk-and-x-out-of-a-dollar137-million-eu-fine/",
-    "summary": "The US government filed an application to support the company\u2019s legal challenge against a fine issued under the bloc\u2019s Digital Services Act, which Trump has described as \u201coverseas extortion.\u201d",
-    "source": "Wired",
-    "tags": [
-      "DSA"
-    ],
-    "date": "2026-09-25T11:32:17+00:00",
-    "fetchedAt": "2026-09-25T12:25:03.610499+00:00"
   }
 ]
